@@ -10,16 +10,13 @@ MenuItem logoff, exitoption;
 int GetCode()
 {
 	int ch = getch();
-
 	if (ch == 0 || ch == 224)
 		ch = 256 + getch();
-
 	return ch;
 }
 
 void Menu(MenuItem *menuItems, int n, char *header){
-	int current = 0, i, ch, old = 1;
-	short esc = 0;
+	short current = 0, i, old = 1, esc = 0;
 	while (!esc) {
 		if (old != current){
 			old = current;
@@ -31,9 +28,7 @@ void Menu(MenuItem *menuItems, int n, char *header){
 			}
 		}
 
-		ch = GetCode();
-
-		switch (ch){
+		switch (GetCode()){
 		case ARROW_UP:
 			if (current > 0) current--;
 			break;

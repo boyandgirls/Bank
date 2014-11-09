@@ -14,7 +14,13 @@ typedef struct UserInfo {
 
 void InitializeDatabase();
 void CloseDatabase();
-sqlite3 *GetDB();
 UserInfo GetUser(const char *login, const char *password);
+int AddAccountToDB(const char *currency, int clientId);
+int DeleteAccountFromDB(int accountId);
+int AddCardToDB(int accountId, char* ownerName, char* date, int cvv);
+int DeleteCardFromDB(int cardId);
+int AccountExists(int accountId);
+int ClientExists(int clientId);
+int CardExists(int cardId);
 
 #endif

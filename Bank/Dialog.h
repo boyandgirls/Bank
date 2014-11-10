@@ -6,8 +6,9 @@
 #define ENTER 13
 
 typedef struct MenuItem {
-	char* displayName;
-	void(*action) (void);
+	char *displayName;
+	void(*action) (void*);
+	void* args;
 } MenuItem;
 
 void Dialog();

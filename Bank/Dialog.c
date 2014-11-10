@@ -6,7 +6,7 @@
 
 int running;
 UserInfo currentUser;
-MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard;
+MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit;
 
 int GetCode()
 {
@@ -38,11 +38,70 @@ void Menu(MenuItem *menuItems, int n, char *header){
 			break;
 		case ENTER:
 			system("cls");
-			menuItems[current].action();
+			menuItems[current].action(menuItems[current].args);
 			esc = 1;
 			break;
 		}
 
+	}
+}
+
+void Back(int *cycle){
+	*cycle = 0;
+}
+
+void Credit(void *m){
+	int cardId;
+	int mul = (int)m;
+	float amount;
+	printf("Card ID: ");
+	scanf("%d", &cardId);
+	printf("Amount: ");
+	scanf("%f", &amount);
+	if (CreditMoney(cardId, mul*amount)){
+		printf("Transaction succeed\n");
+	}
+	else {
+		printf("Transaction failed\n");
+	}
+	system("pause");
+}
+
+void ShowAccount(void* account){
+	Account* acc = (Account*)account;
+	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", acc->Id, acc->Currency, acc->Balance);
+	system("pause");
+}
+
+void WatchClientByPassportNumber(){
+	int i = 0, cycle, passportId;
+	MenuItem *accounts;
+	Client client;
+	char header[300];
+	printf("Passport Number: ");
+	scanf("%d", &passportId);
+	client = GetClient(passportId);
+	accounts = malloc(sizeof(MenuItem)*(client.AccountAmount + 1));
+	accounts[client.AccountAmount].action = &Back;
+	accounts[client.AccountAmount].args = &cycle;
+	accounts[client.AccountAmount].displayName = "Back";
+	if (client.Id != INVALID){
+		sprintf(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
+		cycle = 1;
+		for (i = 0; i < client.AccountAmount; i++){
+			accounts[i].displayName = malloc(sizeof(char) * 30);
+			accounts[i].action = &ShowAccount;
+			accounts[i].args = (void*)(&client.Accounts[i]);
+			sprintf(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
+		}
+
+		while (cycle) {
+			Menu(accounts, client.AccountAmount + 1, header);
+		}
+	}
+	else {
+		printf("Client is not found\n");
+		system("pause");
 	}
 }
 
@@ -122,24 +181,27 @@ void DeleteCard() {
 }
 
 void OperatorMenu(){
-	int n = 2;
+	int n = 4;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Operator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
+	menuItems[0] = credit;
+	menuItems[1] = debit;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
 }
 
 void AdministratorMenu(){
-	int n = 6;
+	int n = 7;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
-	menuItems[n - 6] = addcard;
-	menuItems[n - 5] = deletecard;
-	menuItems[n - 4] = addaccount;
-	menuItems[n - 3] = deleteaccount;
+	menuItems[0] = addcard;
+	menuItems[1] = deletecard;
+	menuItems[2] = addaccount;
+	menuItems[3] = deleteaccount;
+	menuItems[4] = watchclientbyid;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
@@ -160,6 +222,14 @@ void InitializeDialog(){
 	addcard.action = &AddCard;
 	deletecard.displayName = "Delete Card";
 	deletecard.action = &DeleteCard;
+	watchclientbyid.action = &WatchClientByPassportNumber;
+	watchclientbyid.displayName = "Watch client";
+	credit.action = &Credit;
+	credit.args = 1;
+	credit.displayName = "Credit";
+	debit.action = &Credit;
+	debit.args = -1;
+	debit.displayName = "Debet";
 }
 
 void Dialog(){

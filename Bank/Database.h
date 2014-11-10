@@ -12,8 +12,24 @@ typedef struct UserInfo {
 	int Role;
 } UserInfo;
 
+typedef struct Account {
+	int Id;
+	char Currency[5];
+	float Balance;
+} Account;
+
+typedef struct Client {
+	int Id;
+	char FirstName[100];
+	char LastName[100];
+	int AccountAmount;
+	Account *Accounts;
+} Client;
+
+Client GetClient(int clientId);
 void InitializeDatabase();
 void CloseDatabase();
+int CreditMoney(int cardId, float amount);
 UserInfo GetUser(const char *login, const char *password);
 int AddAccountToDB(const char *currency, int clientId);
 int DeleteAccountFromDB(int accountId);

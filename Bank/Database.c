@@ -10,8 +10,75 @@ void CloseDatabase(){
 	sqlite3_close(db);
 }
 
+void IncreaseTransactions(int cardId) {
+	char query[300];
+	sqlite3_stmt *statement;
+	sprintf(query, "UPDATE Card SET TotalTransactions = TotalTransactions + 1 WHERE CardId = %d", cardId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	sqlite3_step(statement);
+	sqlite3_finalize(statement);
+}
+
+int CreditMoney(int cardId, float amount) {
+	char query1[300], query2[300];
+	sqlite3_stmt *statement;
+	float balance;
+	int accountId;
+	sprintf(query1, "SELECT Balance, AccountId FROM Card, Account WHERE Card.Account_AccountId = Account.AccountId AND CardId = %d", cardId);
+	sqlite3_prepare(db, query1, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		balance = sqlite3_column_double(statement, 0);
+		balance += amount;
+		if (balance < 0) return 0;
+		accountId = sqlite3_column_int(statement, 1);
+	}
+	else return 0;
+	sqlite3_finalize(statement);
+	sprintf(query2, "UPDATE Account SET Balance = %f WHERE AccountId = %d", balance, accountId);
+	sqlite3_prepare(db, query2, -1, &statement, 0);
+	sqlite3_step(statement);
+	sqlite3_finalize(statement);
+	IncreaseTransactions(cardId);
+	return 1;
+}
+
+Client GetClient(int clientId){
+	Client client;
+	Account account;
+	int i = 0;
+	client.Id = INVALID;
+	char query[300], query2[300], query3[300];
+	sqlite3_stmt *statement;
+	sprintf(query, "SELECT FirstName, LastName FROM Client WHERE ClientId = %d", clientId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		client.Id = clientId;
+		strcpy(client.FirstName, sqlite3_column_text(statement, 0));
+		strcpy(client.LastName, sqlite3_column_text(statement, 1));
+	}
+	sqlite3_finalize(statement);
+
+	sprintf(query2, "SELECT COUNT(*) FROM Account WHERE Client_ClientId = %d", clientId);
+	sqlite3_prepare(db, query2, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) client.AccountAmount = sqlite3_column_int(statement, 0);
+	sqlite3_finalize(statement);
+
+	if (client.AccountAmount) client.Accounts = malloc(sizeof(account)*client.AccountAmount);
+
+	sprintf(query3, "SELECT AccountId, Currency, Balance FROM Account WHERE Client_ClientId = %d", clientId);
+	sqlite3_prepare(db, query3, -1, &statement, 0);
+	while (sqlite3_step(statement) == SQLITE_ROW) {
+		account.Id = sqlite3_column_int(statement, 0);
+		strcpy(account.Currency, sqlite3_column_text(statement, 1));
+		account.Balance = sqlite3_column_double(statement, 2);
+		client.Accounts[i] = account;
+	    i++;
+	}
+	sqlite3_finalize(statement);
+	return client;
+}
+
 UserInfo GetUser(const char *login, const char *password) {
-	char *dbpassword, *dblogin;
 	UserInfo user;
 	user.Role = INVALID;
 	char query[300];

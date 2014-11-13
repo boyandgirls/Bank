@@ -154,7 +154,7 @@ void DeleteAccount(){
 void AddCard(){
 	srand(time(0));
 	int accountId, cvv = rand() % 1000;
-	char ownerName[100], expiredDate[10];
+	char ownerName[100], expiredDate[11];
 	time_t t = time(NULL);
 	struct tm tm = *localtime(&t);
 	printf("Input account Id.\n");

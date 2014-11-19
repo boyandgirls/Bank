@@ -197,3 +197,93 @@ int DeleteCardFromDB(int cardId)
 	}
 	return 1;
 }
+
+Client GetClientCards(int clientId){
+	Client client = GetClient(clientId);
+	Card card;
+	int i, j;
+	char query[300], query2[300];
+	sqlite3_stmt *statement;
+	for (i = 0; i<client.AccountAmount; i++){
+		j = 0;
+		sprintf(query, "SELECT COUNT(*) FROM Card WHERE Account_AccountId = %d", client.Accounts[i].Id);
+		sqlite3_prepare(db, query, -1, &statement, 0);
+		if (sqlite3_step(statement) == SQLITE_ROW) client.Accounts[i].CardAmount = sqlite3_column_int(statement, 0);
+		sqlite3_finalize(statement);
+
+		if (client.Accounts[i].CardAmount)
+			client.Accounts[i].Cards = malloc(sizeof(card)*client.Accounts[i].CardAmount);
+
+		sprintf(query2, "SELECT CardID, CVV, CardOwnerID, ExpirationDate, TotalTransactions FROM Card WHERE Account_AccountId = %d", client.Accounts[i].Id);
+		sqlite3_prepare(db, query2, -1, &statement, 0);
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			card.Id = sqlite3_column_int(statement, 0);
+			card.CVV = sqlite3_column_int(statement, 1);
+			strcpy(card.CardOwnerID, sqlite3_column_text(statement, 2));
+			strcpy(card.ExpirationDate, sqlite3_column_text(statement, 3));
+			card.TotalTransactions = sqlite3_column_int(statement, 4);
+			client.Accounts[i].Cards[i] = card;
+			j++;
+		}
+		sqlite3_finalize(statement);
+	}
+	return client;
+}
+
+Account GetAccountInfoByAccountId(int accountId){
+	Account account;
+	int i = 0;
+	account.Id = INVALID;
+	char query[300];
+	sqlite3_stmt *statement;
+	sprintf(query, "SELECT Currency,Balance FROM Account WHERE AccountId = %d", accountId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		account.Id = accountId;
+		strcpy(account.Currency, sqlite3_column_text(statement, 0));
+		account.Balance = sqlite3_column_int(statement, 1);
+	}
+	sqlite3_finalize(statement);
+	return account;
+}
+
+Card GetCardInfoByCardId(int cardId){
+	Card card;
+	int i = 0;
+	card.Id = INVALID;
+	char query[300];
+	sqlite3_stmt *statement;
+	sprintf(query, "SELECT CardID, CVV, CardOwnerID, ExpirationDate, TotalTransactions FROM Card WHERE CardID = %d", cardId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		card.Id = sqlite3_column_int(statement, 0);
+		card.CVV = sqlite3_column_int(statement, 1);
+		strcpy(card.CardOwnerID, sqlite3_column_text(statement, 2));
+		strcpy(card.ExpirationDate, sqlite3_column_text(statement, 3));
+		card.TotalTransactions = sqlite3_column_int(statement, 4);
+	}
+	sqlite3_finalize(statement);
+	return card;
+}
+
+Account GetAccountInfoByCardId(int cardId){
+	Account account;
+	int i = 0;
+	account.Id = INVALID;
+	char query[300], query2[300];
+	sqlite3_stmt *statement;
+	sprintf(query, "SELECT Account_AccountId FROM Card WHERE CardID = %d", cardId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		account.Id = sqlite3_column_int(statement, 0);
+	}
+	sqlite3_finalize(statement);
+	sprintf(query2, "SELECT Currency,Balance FROM Account WHERE AccountId = %d", account.Id);
+	sqlite3_prepare(db, query2, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		strcpy(account.Currency, sqlite3_column_text(statement, 0));
+		account.Balance = sqlite3_column_int(statement, 1);
+	}
+	sqlite3_finalize(statement);
+	return account;
+}

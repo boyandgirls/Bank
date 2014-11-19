@@ -12,10 +12,20 @@ typedef struct UserInfo {
 	int Role;
 } UserInfo;
 
+typedef struct Card {
+	int Id;
+	int CVV;
+	char CardOwnerID[100];
+	char ExpirationDate[20];
+	int TotalTransactions;
+} Card;
+
 typedef struct Account {
 	int Id;
 	char Currency[5];
 	float Balance;
+	int CardAmount;
+	Card *Cards;
 } Account;
 
 typedef struct Client {
@@ -38,5 +48,9 @@ int DeleteCardFromDB(int cardId);
 int AccountExists(int accountId);
 int ClientExists(int clientId);
 int CardExists(int cardId);
+Client GetClientCards(int clientId);
+Account GetAccountInfoByAccountId(int accountId);
+Card GetCardInfoByCardId(int cardId);
+Account GetAccountInfoByCardId(int cardId);
 
 #endif

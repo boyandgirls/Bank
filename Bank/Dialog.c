@@ -6,7 +6,7 @@
 
 int running;
 UserInfo currentUser;
-MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit;
+MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, watchcardbycardid;
 
 int GetCode()
 {
@@ -180,6 +180,79 @@ void DeleteCard() {
 	}
 }
 
+void WatchAccountInfoByAccountId(){
+	int accountId;
+	Account account;
+	printf("Account Id: ");
+	scanf("%d", &accountId);
+	account = GetAccountInfoByAccountId(accountId);
+	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	system("pause");
+}
+
+void WatchAccountInfoByCardId(){
+	int cardId;
+	Account account;
+	printf("Card Id: ");
+	scanf("%d", &cardId);
+	account = GetAccountInfoByCardId(cardId);
+	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	system("pause");
+}
+
+void WatchCardInfoByCardId(){
+	int cardId;
+	Card card;
+	printf("Card Id: ");
+	scanf("%d", &cardId);
+	card = GetCardInfoByCardId(cardId);
+	printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
+	system("pause");
+}
+
+void ShowCard(void* card){
+	Card* c = (Card*)card;
+	printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", c->Id, c->CVV, c->CardOwnerID, c->ExpirationDate, c->TotalTransactions);
+	system("pause");
+}
+
+void WatchClientCardsByPassportNumber(){
+	int i = 0, j, k = 0, cycle, passportId;
+	MenuItem *cards;
+	Client client;
+	char header[300];
+	int CardAmount = 0;
+	printf("Passport Number: ");
+	scanf("%d", &passportId);
+	client = GetClientCards(passportId);
+	for (i = 0; i < client.AccountAmount; i++)
+		CardAmount += client.Accounts[i].CardAmount;
+	cards = malloc(sizeof(MenuItem)*(CardAmount + 1));
+	cards[CardAmount].action = &Back;
+	cards[CardAmount].args = &cycle;
+	cards[CardAmount].displayName = "Back";
+	if (client.Id != INVALID){
+		sprintf(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
+		cycle = 1;
+		for (i = 0; i < client.AccountAmount; i++){
+			for (j = 0; j<client.Accounts[i].CardAmount; j++){
+				cards[k].displayName = malloc(sizeof(char)* 30);
+				cards[k].action = &ShowCard;
+				cards[k].args = (void*)(&client.Accounts[i].Cards[j]);
+				sprintf(cards[k].displayName, "Card %d", client.Accounts[i].Cards[j].Id);
+				k++;
+			}
+		}
+		while (cycle) {
+			Menu(cards, client.AccountAmount + 1, header);
+		}
+	}
+	else {
+		printf("Client is not found\n");
+		system("pause");
+	}
+}
+
 void OperatorMenu(){
 	int n = 4;
 	char buffer[250];
@@ -193,7 +266,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 7;
+	int n = 11;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
@@ -202,6 +275,10 @@ void AdministratorMenu(){
 	menuItems[2] = addaccount;
 	menuItems[3] = deleteaccount;
 	menuItems[4] = watchclientbyid;
+	menuItems[5] = watchclientcardsbyid;
+	menuItems[6] = watchaccountbyaccountid;
+	menuItems[7] = watchaccountbycardid;
+	menuItems[8] = watchcardbycardid;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
@@ -230,6 +307,14 @@ void InitializeDialog(){
 	debit.action = &Credit;
 	debit.args = -1;
 	debit.displayName = "Debet";
+	watchclientcardsbyid.action = &WatchClientCardsByPassportNumber;
+	watchclientcardsbyid.displayName = "Watch client cards";
+	watchaccountbyaccountid.action = &WatchAccountInfoByAccountId;
+	watchaccountbyaccountid.displayName = "Watch account info by account id";
+	watchaccountbycardid.action = &WatchAccountInfoByCardId;
+	watchaccountbycardid.displayName = "Watch account info by card id";
+	watchcardbycardid.action = &WatchCardInfoByCardId;
+	watchcardbycardid.displayName = "Watch card info by card id";
 }
 
 void Dialog(){

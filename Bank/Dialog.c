@@ -6,7 +6,7 @@
 
 int running;
 UserInfo currentUser;
-MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, watchcardbycardid;
+MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient;
 
 int GetCode()
 {
@@ -253,6 +253,90 @@ void WatchClientCardsByPassportNumber(){
 	}
 }
 
+void AddClient()
+{
+	int clientId;
+	char firstName[20], lastName[20];
+	printf("Input client Id.\n");
+	scanf("%d", &clientId);
+	printf("Input client's first name.\n");
+	scanf("%s", firstName);
+	printf("Input client's last name.\n");
+	scanf("%s", lastName);
+	if (AddClientToDB(clientId, firstName, lastName) == 0)
+	{
+		printf("Client added to the database.\n");
+		system("pause");
+	}
+}
+
+void DeleteClient()
+{
+	int clientId;
+	printf("Input client Id.\n");
+	scanf("%d", &clientId);
+	if (DeleteClientFromDB(clientId) == 0)
+	{
+		printf("Client deleted.\n");
+		system("pause");
+	}
+}
+
+void UpdateClient()
+{
+	int clientId;
+	Client client;
+	char firstName[20], lastName[20];
+	printf("Input client Id.\n");
+	scanf("%d", &clientId);
+	printf("Input client's first name.\n");
+	scanf("%s", firstName);
+	printf("Input client's last name.\n");
+	scanf("%s", lastName);
+	UpdateClient(clientId, firstName, lastName);
+}
+
+void WatchClientByCard()
+{
+	int i = 0, cycle, CardId;
+	MenuItem *accounts;
+	Client client;
+	char header[300];
+	printf("Card ID: ");
+	scanf("%d", &CardId);
+	if(CardExists(CardId)!=0)
+	{
+		client = GetClientByCardID(CardId);
+		accounts = (MenuItem *)malloc(sizeof(MenuItem)*(client.AccountAmount + 1));
+		accounts[client.AccountAmount].action = &Back;
+		accounts[client.AccountAmount].args = &cycle;
+		accounts[client.AccountAmount].displayName = "Back";
+		if (client.Id != INVALID){
+			sprintf(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
+			cycle = 1;
+			for (i = 0; i < client.AccountAmount; i++){
+				accounts[i].displayName = (char *)malloc(sizeof(char) * 30);
+				accounts[i].action = &ShowAccount;
+				accounts[i].args = (void*)(&client.Accounts[i]);
+				sprintf(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
+			}
+
+			while (cycle) {
+				Menu(accounts, client.AccountAmount + 1, header);
+			}
+		}
+		else {
+			printf("Client is not found\n");
+			system("pause");
+		}
+	}
+	else
+	{
+		printf("Client is not found\n");
+		system("pause");
+	}
+}
+
 void OperatorMenu(){
 	int n = 4;
 	char buffer[250];
@@ -266,7 +350,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 11;
+	int n = 15;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
@@ -279,6 +363,10 @@ void AdministratorMenu(){
 	menuItems[6] = watchaccountbyaccountid;
 	menuItems[7] = watchaccountbycardid;
 	menuItems[8] = watchcardbycardid;
+	menuItems[9] = addclient;
+	menuItems[10] = deleteclient;
+	menuItems[11] = watchclientbycard;
+	menuItems[12] = updateclient;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
@@ -315,6 +403,14 @@ void InitializeDialog(){
 	watchaccountbycardid.displayName = "Watch account info by card id";
 	watchcardbycardid.action = &WatchCardInfoByCardId;
 	watchcardbycardid.displayName = "Watch card info by card id";
+	addclient.displayName = "Add Client";
+	addclient.action = &AddClient;
+	deleteclient.displayName="Delete Client";
+	deleteclient.action = &DeleteClient;
+	watchclientbycard.displayName="Watch client by card";
+	watchclientbycard.action= &WatchClientByCard;
+	updateclient.action= &UpdateClient;
+	updateclient.displayName="Update client";
 }
 
 void Dialog(){

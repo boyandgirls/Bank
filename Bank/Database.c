@@ -287,3 +287,88 @@ Account GetAccountInfoByCardId(int cardId){
 	sqlite3_finalize(statement);
 	return account;
 }
+
+int AddClientToDB(int clientId, char* firstName, char* lastName){
+	if (ClientExists(clientId) != 0)
+	{
+		sqlite3_stmt *stmt;
+		sqlite3_prepare(db, "INSERT INTO Client (CLIENTID, FIRSTNAME, LASTNAME) VALUES ((?), (?), (?))", -1, &stmt, 0);
+		sqlite3_bind_int(stmt, 1, clientId);
+		sqlite3_bind_text(stmt, 2, firstName, -1, 0);
+		sqlite3_bind_text(stmt, 3, lastName, -1, 0);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
+		return 0;
+	}
+	return 1;
+}
+
+int DeleteClientFromDB(int clientId)
+{
+	if (ClientExists(clientId) != 0)
+	{
+		sqlite3_stmt *stmt;
+		sqlite3_prepare(db, "DELETE FROM Client WHERE CardId = (?)", -1, &stmt, 0);
+		sqlite3_bind_int(stmt, 1, clientId);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
+		return 0;
+	}
+	return 1;
+}
+
+Client GetClientByCardID(int cardId)
+{
+	sqlite3_stmt *statement;
+	int ID=0;
+	Client client;
+	Account account;
+	int i = 0;
+	client.Id = INVALID;
+	char query[300], query2[300], query3[300];
+	sprintf(query, "SELECT Client.ClientId, Client.FirstName, Client.LastName FROM Client INNER JOIN Account ON Client.ClientId=Account.Client_ClientId INNER JOIN Card ON Card.Account_AccountId=Account.AccountId WHERE Card.CardId = %d", cardId);
+	sqlite3_prepare(db, query, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) {
+		client.Id = atoi((char *)sqlite3_column_text(statement,0));
+		strcpy(client.FirstName, (char *)sqlite3_column_text(statement,1));
+		strcpy(client.LastName, (char *)sqlite3_column_text(statement, 2));
+		ID=client.Id;
+	}
+	sqlite3_finalize(statement);
+
+	sprintf(query2, "SELECT COUNT(*) FROM Account WHERE Client_ClientId = %d", ID);
+	sqlite3_prepare(db, query2, -1, &statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) client.AccountAmount = sqlite3_column_int(statement, 0);
+	sqlite3_finalize(statement);
+
+	if (client.AccountAmount) client.Accounts = (Account*)malloc(sizeof(account)*client.AccountAmount);
+
+	sprintf(query3, "SELECT AccountId, Currency, Balance FROM Account WHERE Client_ClientId = %d", ID);
+	sqlite3_prepare(db, query3, -1, &statement, 0);
+	while (sqlite3_step(statement) == SQLITE_ROW) {
+		account.Id = sqlite3_column_int(statement, 0);
+		strcpy(account.Currency, (char *)sqlite3_column_text(statement, 1));
+		account.Balance = sqlite3_column_double(statement, 2);
+		client.Accounts[i] = account;
+	    i++;
+	}
+	sqlite3_finalize(statement);
+	return client;
+}
+
+int UpdateClient(int clientId, char* firstName, char* lastName)
+{
+	if (ClientExists(clientId) != 0)
+	{
+		sqlite3_stmt *stmt;
+		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID=", *number;
+		itoa(clientId, number, 10);
+		sqlite3_prepare(db, strcat(query, number), -1, &stmt, 0);
+		sqlite3_bind_text(stmt, 1, firstName, -1, 0);
+		sqlite3_bind_text(stmt, 2, lastName, -1, 0);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
+		return 0;
+	}
+	return 1;
+}

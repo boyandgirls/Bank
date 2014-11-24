@@ -356,7 +356,7 @@ Client GetClientByCardID(int cardId)
 	return client;
 }
 
-int UpdateClient(int clientId, char* firstName, char* lastName)
+int UpdateClientInDB(int clientId, char* firstName, char* lastName)
 {
 	if (ClientExists(clientId) != 0)
 	{

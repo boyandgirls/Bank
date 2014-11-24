@@ -55,5 +55,5 @@ Account GetAccountInfoByCardId(int cardId);
 int AddClientToDB(int clientId, char* firstName, char* lastName);
 int DeleteClientFromDB(int clientId);
 Client GetClientByCardID(int cardId);
-int UpdateClient(int clientId, char* firstName, char* lastName);
+int UpdateClientInDB(int clientId, char* firstName, char* lastName);
 #endif

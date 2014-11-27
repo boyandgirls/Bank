@@ -6,6 +6,8 @@
 #define ADMINISTRATOR 0
 #define OPERATOR 1
 
+sqlite3 *db;
+
 typedef struct UserInfo {
 	char FirstName[100];
 	char LastName[100];

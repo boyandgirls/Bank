@@ -9,8 +9,8 @@ int running;
 UserInfo currentUser;
 MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
-watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient, blockaccount, unblockaccount, changecurrency, changefeeandquotes;;
-MenuItem deleteClientTest, addCardTest;
+watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient, blockaccount, unblockaccount, changecurrency, changefeeandquotes;
+MenuItem deleteClientTest, addCardTest, getClientTest;
 
 int GetCode()
 {
@@ -311,10 +311,11 @@ void UpdateClient()
 
 void RunTests()
 {
-	int testsNumber = 2;
+	int testsNumber = 3;
 	MenuItem * tests = (MenuItem *)malloc(sizeof(MenuItem)*(testsNumber));
 	tests[0] = deleteClientTest;
 	tests[1] = addCardTest;
+	tests[2] = getClientTest;
 	for (int i = 0; i < testsNumber; i++)
 	{		
 		int result = (int)tests[i].action(NULL);
@@ -409,6 +410,8 @@ void InitializeTests(){
 	deleteClientTest.action = &DeleteClientTest;
 	addCardTest.displayName = "Add Card Test";
 	addCardTest.action = &AddCardTest;
+	getClientTest.displayName = "Get Client Test";
+	getClientTest.action = &GetClientTest;
 }
 
 void ChangeFeeAndQuotes(){

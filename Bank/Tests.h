@@ -6,6 +6,6 @@
 
 int DeleteClientTest();
 int AddCardTest();
-
+int GetClientTest();
 
 #endif

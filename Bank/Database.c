@@ -1,6 +1,5 @@
 #include "Database.h"
 
-sqlite3 *db;
 
 void InitializeDatabase(){
 	sqlite3_open("Database\\BankDatabase.db", &db);

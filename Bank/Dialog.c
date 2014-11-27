@@ -186,7 +186,10 @@ void WatchAccountInfoByAccountId(){
 	printf("Account Id: ");
 	scanf("%d", &accountId);
 	account = GetAccountInfoByAccountId(accountId);
-	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	if (account.Id != INVALID)
+		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	else
+		printf("Account not found\n");
 	system("pause");
 }
 
@@ -196,7 +199,10 @@ void WatchAccountInfoByCardId(){
 	printf("Card Id: ");
 	scanf("%d", &cardId);
 	account = GetAccountInfoByCardId(cardId);
-	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	if (account.Id != INVALID)
+		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
+	else
+		printf("Account not found\n");
 	system("pause");
 }
 
@@ -206,7 +212,10 @@ void WatchCardInfoByCardId(){
 	printf("Card Id: ");
 	scanf("%d", &cardId);
 	card = GetCardInfoByCardId(cardId);
-	printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
+	if (card.Id != INVALID)
+		printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
+	else
+		printf("Card not found\n");
 	system("pause");
 }
 

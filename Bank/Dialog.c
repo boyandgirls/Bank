@@ -379,7 +379,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 16;
+	int n = 20;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));

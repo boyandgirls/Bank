@@ -387,10 +387,10 @@ int ChangeCurrencyInAccount(const char *newcurrency, int clientID){
 	return 1;
 }
 
-int ChangeFeeAndQuotes(int AccountID, int FeeValue, int QuotesValue){
+int ChangeFeeAndQuotesInAccount(int AccountID, int FeeValue, int QuotesValue){
 	if (AccountExists(AccountID) != 0)
 	{
-		char *query = "UPDATE ACCOUNT SET FEE = (?) QUOTES = (?) WHERE CLIENTID=";
+		char *query = "UPDATE ACCOUNT SET FEE = (?) QUOTES = (?) WHERE ACCOUNTID=";
 		sqlite3_stmt *stmt;
 		sqlite3_prepare(db, (query, FeeValue, QuotesValue), -1, &stmt, 0);
 		sqlite3_bind_text(stmt, 1, FeeValue, -1, 0);
@@ -424,6 +424,7 @@ int UnblockAccount(int AccountID){
 		sqlite3_bind_text(stmt, 1, 0, -1, 0);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
+		return 0;
 	}
 	return 1;
 }

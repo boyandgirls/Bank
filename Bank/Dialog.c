@@ -144,6 +144,8 @@ void AddAccount(){
 	}
 }
 
+
+
 void DeleteAccount(){
 	int accountId;
 	printf("Input account Id.\n");
@@ -452,15 +454,65 @@ void InitializeDialog(){
 	updateclient.displayName="Update client";
 	runtests.displayName = "Run tests";
 	runtests.action = &RunTests;
-	blockaccount.action = &BlockAccount;
+	blockaccount.action = &BlockA;
 	blockaccount.displayName = "Block Account";
-	unblockaccount.action = &UnblockAccount;
+	unblockaccount.action = &UnblockA;
 	unblockaccount.displayName = "Unblock Account";
-	changecurrency.action = &ChangeCurrencyInAccount;
+	changecurrency.action = &ChangeCurrency;
 	changecurrency.displayName = "Change currency in Account";
 	changefeeandquotes.action = &ChangeFeeAndQuotes;
 	changefeeandquotes.displayName = "Change fee and quotes in Account";
 	InitializeTests();
+}
+
+void ChangeFeeAndQuotes(){
+	int Fee, Quota, AccountId;
+	printf("Input account ID\n");
+	scanf("%d", AccountId);
+	printf("Input fee value\n");
+	scanf("%d", Fee);
+	printf("Input quote value\n");
+	scanf("%d", Quota);
+	if (ChangeFeeAndQuotesInAccount(AccountId, Fee, Quota) == 0)
+		printf("Successful\n");
+	else
+	{
+		printf("Error\n");
+	}
+}
+
+void ChangeCurrency(){
+	char Currency[5];
+	int ClientId;
+	printf("Input value of currency\n");
+	scanf("%s", Currency);
+	printf("Input client ID\n");
+	scanf("%d", ClientId);
+	if (ChangeCurrencyInAccount(Currency, ClientId) == 0)
+		printf("Currency changed succsesful\n");
+	else printf("Error in changing currency\n");
+}
+
+void BlockA(){
+	int ClientId;
+	printf("Input client ID\n");
+	scanf("%d", ClientId);
+	if (BlockAccount == 0 )
+	{
+		printf("Account is blocked\n");
+	}
+	else printf("Error in blocking account\n");
+}
+
+void UnblockA(){
+	int ClientID;
+	printf("Input client ID\n");
+	scanf("%d", ClientID);
+	if (UnblockAccount == 0)
+	{
+		printf("Account is blocked\n");
+	}
+	else printf("Error in blocking account\n");
 }
 
 void Dialog(){

@@ -58,7 +58,7 @@ int DeleteClientFromDB(int clientId);
 Client GetClientByCardID(int cardId);
 int UpdateClientInDB(int clientId, char* firstName, char* lastName);
 int ChangeCurrencyInAccount(const char *newcurrency, int clientID);
-int ChangeFeeAndQuotes(int AccountID, int FeeValue, int QuotesValue);
+int ChangeFeeAndQuotesInAccount(int AccountID, int FeeValue, int QuotesValue);
 int BlockAccount(int AccountID);
 int UnblockAccount(int AccountID);
 #endif

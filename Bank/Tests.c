@@ -6,5 +6,13 @@ int DeleteClientTest(){
 }
 
 int AddCardTest(){
-	return SUCCESS;
+	AddCardToDB(2, "Mr. Jack Michaelson", "01.12.2020", 537);
+	if (CardExists(2)!=0)
+	{
+		return SUCCESS;
+	}
+	else
+	{
+		return FAILURE;
+	}
 }

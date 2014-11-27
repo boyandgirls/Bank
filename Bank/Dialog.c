@@ -1,12 +1,16 @@
 #include "Dialog.h"
 #include "Database.h"
+#include "Tests.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 int running;
 UserInfo currentUser;
-MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard, watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient;
+MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
+watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
+watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient;
+MenuItem deleteClientTest, addCardTest;
 
 int GetCode()
 {
@@ -305,6 +309,20 @@ void UpdateClient()
 	UpdateClient(clientId, firstName, lastName);
 }
 
+void RunTests()
+{
+	int testsNumber = 2;
+	MenuItem * tests = (MenuItem *)malloc(sizeof(MenuItem)*(testsNumber));
+	tests[0] = deleteClientTest;
+	tests[1] = addCardTest;
+	for (int i = 0; i < testsNumber; i++)
+	{		
+		int result = (int)tests[i].action(NULL);
+		printf("%s: %s\n", tests[i].displayName, result == SUCCESS ? "Successful" : "Failed");
+	}	
+	system("pause");
+}
+
 void WatchClientByCard()
 {
 	int i = 0, cycle, CardId;
@@ -359,7 +377,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 15;
+	int n = 16;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
@@ -376,9 +394,17 @@ void AdministratorMenu(){
 	menuItems[10] = deleteclient;
 	menuItems[11] = watchclientbycard;
 	menuItems[12] = updateclient;
+	menuItems[13] = runtests;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
+}
+
+void InitializeTests(){
+	deleteClientTest.displayName = "Delete Client Test";
+	deleteClientTest.action = &DeleteClientTest;
+	addCardTest.displayName = "Add Card Test";
+	addCardTest.action = &AddCardTest;
 }
 
 void InitializeDialog(){
@@ -420,6 +446,9 @@ void InitializeDialog(){
 	watchclientbycard.action= &WatchClientByCard;
 	updateclient.action= &UpdateClient;
 	updateclient.displayName="Update client";
+	runtests.displayName = "Run tests";
+	runtests.action = &RunTests;
+	InitializeTests();
 }
 
 void Dialog(){

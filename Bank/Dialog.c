@@ -271,14 +271,12 @@ void WatchClientCardsByPassportNumber(){
 void AddClient()
 {
 	int clientId;
-	char firstName[20], lastName[20];
-	printf("Input client Id.\n");
-	scanf("%d", &clientId);
+	char firstName[120], lastName[120];
 	printf("Input client's first name.\n");
 	scanf("%s", firstName);
 	printf("Input client's last name.\n");
 	scanf("%s", lastName);
-	if (AddClientToDB(clientId, firstName, lastName) == 0)
+	if (AddClientToDB(firstName, lastName) == 0)
 	{
 		printf("Client added to the database.\n");
 		system("pause");
@@ -379,7 +377,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 16;
+	int n = 20;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));

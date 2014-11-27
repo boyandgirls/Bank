@@ -288,19 +288,14 @@ Account GetAccountInfoByCardId(int cardId){
 	return account;
 }
 
-int AddClientToDB(int clientId, char* firstName, char* lastName){
-	if (ClientExists(clientId) != 0)
-	{
-		sqlite3_stmt *stmt;
-		sqlite3_prepare(db, "INSERT INTO Client (CLIENTID, FIRSTNAME, LASTNAME) VALUES ((?), (?), (?))", -1, &stmt, 0);
-		sqlite3_bind_int(stmt, 1, clientId);
-		sqlite3_bind_text(stmt, 2, firstName, -1, 0);
-		sqlite3_bind_text(stmt, 3, lastName, -1, 0);
-		sqlite3_step(stmt);
-		sqlite3_finalize(stmt);
-		return 0;
-	}
-	return 1;
+int AddClientToDB(char* firstName, char* lastName){
+	sqlite3_stmt *stmt;
+	sqlite3_prepare(db, "INSERT INTO Client (FIRSTNAME, LASTNAME) VALUES ((?), (?))", -1, &stmt, 0);
+	sqlite3_bind_text(stmt, 1, firstName, -1, 0);
+	sqlite3_bind_text(stmt, 2, lastName, -1, 0);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
+	return 0;
 }
 
 int DeleteClientFromDB(int clientId)
@@ -308,7 +303,7 @@ int DeleteClientFromDB(int clientId)
 	if (ClientExists(clientId) != 0)
 	{
 		sqlite3_stmt *stmt;
-		sqlite3_prepare(db, "DELETE FROM Client WHERE CardId = (?)", -1, &stmt, 0);
+		sqlite3_prepare(db, "DELETE FROM Client WHERE ClientId = (?)", -1, &stmt, 0);
 		sqlite3_bind_int(stmt, 1, clientId);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);

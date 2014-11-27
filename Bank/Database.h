@@ -53,7 +53,7 @@ Client GetClientCards(int clientId);
 Account GetAccountInfoByAccountId(int accountId);
 Card GetCardInfoByCardId(int cardId);
 Account GetAccountInfoByCardId(int cardId);
-int AddClientToDB(int clientId, char* firstName, char* lastName);
+int AddClientToDB(char* firstName, char* lastName);
 int DeleteClientFromDB(int clientId);
 Client GetClientByCardID(int cardId);
 int UpdateClientInDB(int clientId, char* firstName, char* lastName);

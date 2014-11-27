@@ -22,6 +22,7 @@ typedef struct Card {
 
 typedef struct Account {
 	int Id;
+	int IsBlocked;
 	char Currency[5];
 	float Balance;
 	int CardAmount;
@@ -56,4 +57,8 @@ int AddClientToDB(int clientId, char* firstName, char* lastName);
 int DeleteClientFromDB(int clientId);
 Client GetClientByCardID(int cardId);
 int UpdateClientInDB(int clientId, char* firstName, char* lastName);
+int ChangeCurrencyInAccount(const char *newcurrency, int clientID);
+int ChangeFeeAndQuotes(int AccountID, int FeeValue, int QuotesValue);
+int BlockAccount(int AccountID);
+int UnblockAccount(int AccountID);
 #endif

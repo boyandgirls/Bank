@@ -9,7 +9,7 @@ int running;
 UserInfo currentUser;
 MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
-watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient;
+watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient, blockaccount, unblockaccount, changecurrency, changefeeandquotes;;
 MenuItem deleteClientTest, addCardTest;
 
 int GetCode()
@@ -395,6 +395,10 @@ void AdministratorMenu(){
 	menuItems[11] = watchclientbycard;
 	menuItems[12] = updateclient;
 	menuItems[13] = runtests;
+	menuItems[14] = blockaccount;
+	menuItems[15] = unblockaccount;
+	menuItems[16] = changecurrency;
+	menuItems[17] = changefeeandquotes;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
@@ -448,6 +452,14 @@ void InitializeDialog(){
 	updateclient.displayName="Update client";
 	runtests.displayName = "Run tests";
 	runtests.action = &RunTests;
+	blockaccount.action = &BlockAccount;
+	blockaccount.displayName = "Block Account";
+	unblockaccount.action = &UnblockAccount;
+	unblockaccount.displayName = "Unblock Account";
+	changecurrency.action = &ChangeCurrencyInAccount;
+	changecurrency.displayName = "Change currency in Account";
+	changefeeandquotes.action = &ChangeFeeAndQuotes;
+	changefeeandquotes.displayName = "Change fee and quotes in Account";
 	InitializeTests();
 }
 

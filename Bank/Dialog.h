@@ -7,7 +7,7 @@
 
 typedef struct MenuItem {
 	char *displayName;
-	void(*action) (void*);
+	void*(*action) (void*);
 	void* args;
 } MenuItem;
 

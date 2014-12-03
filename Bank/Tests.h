@@ -7,5 +7,6 @@
 int DeleteClientTest();
 int AddCardTest();
 int GetClientTest();
+int CreditTest();
 
 #endif

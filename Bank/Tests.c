@@ -48,3 +48,15 @@ int GetClientTest(){
 		return SUCCESS;
 	return FAILURE;
 }
+
+int CreditTest(){
+	int cardId = 0;
+	float oldBalance, sum = 500;
+	Account acc = GetAccountInfoByCardId(cardId);
+	oldBalance = acc.Balance;
+	CreditMoney(cardId, sum);
+	acc = GetAccountInfoByCardId(cardId);
+	CreditMoney(cardId, -sum);
+	return acc.Balance == oldBalance + sum ? SUCCESS : FAILURE;
+}
+

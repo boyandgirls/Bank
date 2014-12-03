@@ -10,7 +10,7 @@ UserInfo currentUser;
 MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
 watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient, blockaccount, unblockaccount, changecurrency, changefeeandquotes;
-MenuItem deleteClientTest, addCardTest, getClientTest;
+MenuItem deleteClientTest, addCardTest, getClientTest, creditTest;
 
 int GetCode()
 {
@@ -311,11 +311,12 @@ void UpdateClient()
 
 void RunTests()
 {
-	int testsNumber = 3;
+	int testsNumber = 4;
 	MenuItem * tests = (MenuItem *)malloc(sizeof(MenuItem)*(testsNumber));
 	tests[0] = deleteClientTest;
 	tests[1] = addCardTest;
 	tests[2] = getClientTest;
+	tests[3] = creditTest;
 	for (int i = 0; i < testsNumber; i++)
 	{		
 		int result = (int)tests[i].action(NULL);
@@ -412,6 +413,8 @@ void InitializeTests(){
 	addCardTest.action = &AddCardTest;
 	getClientTest.displayName = "Get Client Test";
 	getClientTest.action = &GetClientTest;
+	creditTest.action = &CreditTest;
+	creditTest.displayName = "Credit Test";
 }
 
 void ChangeFeeAndQuotes(){
@@ -515,8 +518,6 @@ void InitializeDialog(){
 	changefeeandquotes.displayName = "Change fee and quotes in Account";
 	InitializeTests();
 }
-
-
 
 void Dialog(){
 	InitializeDialog();

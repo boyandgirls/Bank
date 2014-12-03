@@ -10,7 +10,12 @@ int DeleteClientTest(){
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 	DeleteClientFromDB(id);
-	return (ClientExists(id, 0) == 0) ? SUCCESS : FAILURE;
+	if (!ClientExists(id, 0)) return SUCCESS;
+	sqlite3_prepare(db, "DELETE FROM Client WHERE CLIENTID = (?)", -1, &stmt, 0);
+	sqlite3_bind_int(stmt, 1, id);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
+	return FAILURE;
 }
 
 int AddCardTest(){

@@ -49,7 +49,7 @@ int DeleteAccountFromDB(int accountId);
 int AddCardToDB(int accountId, char* ownerName, char* date, int cvv);
 int DeleteCardFromDB(int cardId);
 int AccountExists(int accountId);
-int ClientExists(int clientId);
+int ClientExists(int clientId, int showError);
 int CardExists(int cardId);
 Client GetClientCards(int clientId);
 Account GetAccountInfoByAccountId(int accountId);

@@ -2,7 +2,15 @@
 #include "Database.h"
 
 int DeleteClientTest(){	
-	return SUCCESS;
+	int id = 9999;	
+	while (ClientExists(id, 0) != 0) id++;
+	sqlite3_stmt *stmt;
+	sqlite3_prepare(db, "INSERT INTO Client (CLIENTID, FIRSTNAME, LASTNAME) VALUES ((?), 'James', 'Blunt')", -1, &stmt, 0);
+	sqlite3_bind_int(stmt, 1, id);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
+	DeleteClientFromDB(id);
+	return (ClientExists(id, 0) == 0) ? SUCCESS : FAILURE;
 }
 
 int AddCardTest(){

@@ -93,7 +93,7 @@ UserInfo GetUser(const char *login, const char *password) {
 	return user;
 }
 
-int ClientExists(int clientId)
+int ClientExists(int clientId, int showError)
 {
 	sqlite3_stmt *stmt;
 	sqlite3_prepare(db, "SELECT ClientId FROM Client WHERE ClientId = (?)", -1, &stmt, 0);
@@ -101,7 +101,7 @@ int ClientExists(int clientId)
 	sqlite3_step(stmt);
 	clientId = sqlite3_column_int(stmt, 0);
 	sqlite3_finalize(stmt);
-	if (clientId == 0)
+	if (!clientId && showError)
 	{
 		printf("Error: The client doesn't exist.\n");
 		system("pause");
@@ -141,7 +141,7 @@ int CardExists(int cardId) {
 }
 
 int AddAccountToDB(const char *currency, int clientId) {
-	if (ClientExists(clientId) != 0)
+	if (ClientExists(clientId, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
 		sqlite3_prepare(db, "INSERT INTO Account (CURRENCY, CLIENT_CLIENTID, BALANCE) VALUES ((?), (?), 0)", -1, &stmt, 0);
@@ -299,7 +299,7 @@ int AddClientToDB(char* firstName, char* lastName){
 
 int DeleteClientFromDB(int clientId)
 {
-	if (ClientExists(clientId) != 0)
+	if (ClientExists(clientId, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
 		sqlite3_prepare(db, "DELETE FROM Client WHERE ClientId = (?)", -1, &stmt, 0);
@@ -352,7 +352,7 @@ Client GetClientByCardID(int cardId)
 
 int UpdateClientInDB(int clientId, char* firstName, char* lastName)
 {
-	if (ClientExists(clientId) != 0)
+	if (ClientExists(clientId, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
 		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID=", *number;
@@ -368,7 +368,7 @@ int UpdateClientInDB(int clientId, char* firstName, char* lastName)
 }
 
 int ChangeCurrencyInAccount(const char *newcurrency, int clientID){
-	if (ClientExists(clientID) != 0)
+	if (ClientExists(clientID, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
 		char *query = "UPDATE CLIENT SET CURRENCY = (?) WHERE CLIENTID=";

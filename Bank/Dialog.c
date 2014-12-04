@@ -420,11 +420,11 @@ void InitializeTests(){
 void ChangeFeeAndQuotes(){
 	int Fee, Quota, AccountId;
 	printf("Input account ID\n");
-	scanf("%d", AccountId);
+	scanf("%d", &AccountId);
 	printf("Input fee value\n");
-	scanf("%d", Fee);
+	scanf("%d", &Fee);
 	printf("Input quote value\n");
-	scanf("%d", Quota);
+	scanf("%d", &Quota);
 	if (ChangeFeeAndQuotesInAccount(AccountId, Fee, Quota) == 0)
 		printf("Successful\n");
 	else
@@ -437,9 +437,9 @@ void ChangeCurrency(){
 	char Currency[5];
 	int ClientId;
 	printf("Input value of currency\n");
-	scanf("%s", Currency);
+	scanf("%s", &Currency);
 	printf("Input client ID\n");
-	scanf("%d", ClientId);
+	scanf("%d", &ClientId);
 	if (ChangeCurrencyInAccount(Currency, ClientId) == 0)
 		printf("Currency changed succsesful\n");
 	else printf("Error in changing currency\n");
@@ -448,7 +448,7 @@ void ChangeCurrency(){
 void BlockA(){
 	int ClientId;
 	printf("Input client ID\n");
-	scanf("%d", ClientId);
+	scanf("%d", &ClientId);
 	if (BlockAccount == 0)
 	{
 		printf("Account is blocked\n");
@@ -459,7 +459,7 @@ void BlockA(){
 void UnblockA(){
 	int ClientID;
 	printf("Input client ID\n");
-	scanf("%d", ClientID);
+	scanf("%d", &ClientID);
 	if (UnblockAccount == 0)
 	{
 		printf("Account is blocked\n");

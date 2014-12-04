@@ -449,7 +449,7 @@ void BlockA(){
 	int ClientId;
 	printf("Input client ID\n");
 	scanf("%d", &ClientId);
-	if (BlockAccount == 0)
+	if (BlockAccount(ClientId) == 0)
 	{
 		printf("Account is blocked\n");
 	}
@@ -460,7 +460,7 @@ void UnblockA(){
 	int ClientID;
 	printf("Input client ID\n");
 	scanf("%d", &ClientID);
-	if (UnblockAccount == 0)
+	if (UnblockAccount(ClientID) == 0)
 	{
 		printf("Account is blocked\n");
 	}

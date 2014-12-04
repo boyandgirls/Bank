@@ -61,6 +61,6 @@ Client GetClientByCardID(int cardId);
 int UpdateClientInDB(int clientId, char* firstName, char* lastName);
 int ChangeCurrencyInAccount(const char *newcurrency, int clientID);
 int ChangeFeeAndQuotesInAccount(int AccountID, int FeeValue, int QuotesValue);
-int BlockAccount(int AccountID);
-int UnblockAccount(int AccountID);
+int BlockCardInDB(int CardID);
+int UnblockCardInDB(int CardID);
 #endif

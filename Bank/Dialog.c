@@ -9,7 +9,7 @@ int running;
 UserInfo currentUser;
 MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
-watchcardbycardid,  addclient, deleteclient, watchclientbycard, updateclient, blockaccount, unblockaccount, changecurrency, changefeeandquotes;
+watchcardbycardid, addclient, deleteclient, watchclientbycard, updateclient, blockcard, unblockcard, changecurrency, changefeeandquotes;
 MenuItem deleteClientTest, addCardTest, getClientTest, creditTest;
 
 int GetCode()
@@ -397,8 +397,8 @@ void AdministratorMenu(){
 	menuItems[11] = watchclientbycard;
 	menuItems[12] = updateclient;
 	menuItems[13] = runtests;
-	menuItems[14] = blockaccount;
-	menuItems[15] = unblockaccount;
+	menuItems[14] = blockcard;
+	menuItems[15] = unblockcard;
 	menuItems[16] = changecurrency;
 	menuItems[17] = changefeeandquotes;
 	menuItems[n - 2] = logoff;
@@ -445,26 +445,28 @@ void ChangeCurrency(){
 	else printf("Error in changing currency\n");
 }
 
-void BlockA(){
-	int ClientId;
-	printf("Input client ID\n");
-	scanf("%d", &ClientId);
-	if (BlockAccount(ClientId) == 0)
+void BlockCard(){
+	int CardId;
+	printf("Input card ID\n");
+	scanf("%d", &CardId);
+	if (BlockCardInDB(CardId) == 0)
 	{
-		printf("Account is blocked\n");
+		printf("Card is blocked.\n");
 	}
-	else printf("Error in blocking account\n");
+	else printf("Error in blocking card.\n");
+	system("pause");
 }
 
-void UnblockA(){
-	int ClientID;
-	printf("Input client ID\n");
-	scanf("%d", &ClientID);
-	if (UnblockAccount(ClientID) == 0)
+void UnblockCard(){
+	int CardId;
+	printf("Input card ID\n");
+	scanf("%d", &CardId);
+	if (UnblockCardInDB(CardId) == 0)
 	{
-		printf("Account is blocked\n");
+		printf("Card is unblocked.\n");
 	}
-	else printf("Error in blocking account\n");
+	else printf("Error in blocking card.\n");
+	system("pause");
 }
 
 void InitializeDialog(){
@@ -508,10 +510,10 @@ void InitializeDialog(){
 	updateclient.displayName="Update client";
 	runtests.displayName = "Run tests";
 	runtests.action = &RunTests;
-	blockaccount.action = &BlockA;
-	blockaccount.displayName = "Block Account";
-	unblockaccount.action = &UnblockA;
-	unblockaccount.displayName = "Unblock Account";
+	blockcard.action = &BlockCard;
+	blockcard.displayName = "Block card";
+	unblockcard.action = &UnblockCard;
+	unblockcard.displayName = "Unblock card";
 	changecurrency.action = &ChangeCurrency;
 	changecurrency.displayName = "Change currency in Account";
 	changefeeandquotes.action = &ChangeFeeAndQuotes;

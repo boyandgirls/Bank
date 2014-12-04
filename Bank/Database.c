@@ -396,26 +396,26 @@ int ChangeFeeAndQuotesInAccount(int AccountID, int FeeValue, int QuotesValue){
 	return 1;
 }
 
-int BlockAccount(int AccountID){
-	if (AccountExists(AccountID) != 0)
+int BlockCardInDB(int CardID){
+	if (CardExists(CardID) != 0)
 	{
-		char *query = "UPDATE ACCOUNT SET IsBlocked = (?)";
 		sqlite3_stmt *stmt;
-		sqlite3_prepare(db, (query, 1), -1, &stmt, 0);
-		sqlite3_bind_text(stmt, 1, 0, -1, 0);
+		sqlite3_prepare(db, "UPDATE CARD SET IsBlocked = (?) WHERE CardId = (?)", -1, &stmt, 0);
+		sqlite3_bind_int(stmt, 1, 1);
+		sqlite3_bind_int(stmt, 2, CardID);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 		return 0;
 	}
 	return 1;
 }
-int UnblockAccount(int AccountID){
-	if (AccountExists(AccountID) != 0)
+int UnblockCardInDB(int CardID){
+	if (CardExists(CardID) != 0)
 	{
-		char *query = "UPDATE ACCOUNT SET IsBlocked = (?)";
 		sqlite3_stmt *stmt;
-		sqlite3_prepare(db, (query, 0), -1, &stmt, 0);
-		sqlite3_bind_text(stmt, 1, 0, -1, 0);
+		sqlite3_prepare(db, "UPDATE CARD SET IsBlocked = (?) WHERE CardId = (?)", -1, &stmt, 0);
+		sqlite3_bind_int(stmt, 1, 0);
+		sqlite3_bind_int(stmt, 2, CardID);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 		return 0;

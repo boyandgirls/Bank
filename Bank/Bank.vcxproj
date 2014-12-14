@@ -80,11 +80,13 @@
     <ClCompile Include="Dialog.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="Tests.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="Tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

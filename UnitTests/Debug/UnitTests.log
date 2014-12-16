@@ -1,81 +1,6 @@
-﻿Сборка начата 16.12.2014 18:08:13.
+﻿Сборка начата 16.12.2014 19:40:29.
      1>Проект "C:\Users\User\Documents\Bank\UnitTests\UnitTests.vcxproj" в узле 2 (целевые объекты Build).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\User\Documents\Bank\Bank /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\Bank\Dialog.c mainTests.c
-         mainTests.c
-     1>c:\users\user\documents\bank\unittests\maintests.c(12): warning C4113: "int (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\unittests\maintests.c(12): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "int (__cdecl *)()"
-     1>c:\users\user\documents\bank\unittests\maintests.c(14): warning C4113: "int (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\unittests\maintests.c(14): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "int (__cdecl *)()"
-     1>c:\users\user\documents\bank\unittests\maintests.c(16): warning C4113: "int (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\unittests\maintests.c(16): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "int (__cdecl *)()"
-     1>c:\users\user\documents\bank\unittests\maintests.c(17): warning C4113: "int (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\unittests\maintests.c(17): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "int (__cdecl *)()"
-     1>c:\users\user\documents\bank\unittests\maintests.c(24): warning C4013: malloc: нет определения; предполагается "extern" с возвратом типа "int"
-         Dialog.c
-     1>c:\users\user\documents\bank\bank\dialog.c(16): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
-     1>c:\users\user\documents\bank\bank\dialog.c(88): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(92): warning C4047: функция: "size_t" отличается по уровням косвенного обращения от "char [44]"
-     1>c:\users\user\documents\bank\bank\dialog.c(92): warning C4024: sprintf_s: различные типы для формального и фактического параметров 2
-     1>c:\users\user\documents\bank\bank\dialog.c(92): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "int"
-     1>c:\users\user\documents\bank\bank\dialog.c(92): warning C4024: sprintf_s: различные типы для формального и фактического параметров 3
-     1>c:\users\user\documents\bank\bank\dialog.c(96): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(98): warning C4047: функция: "size_t" отличается по уровням косвенного обращения от "char [11]"
-     1>c:\users\user\documents\bank\bank\dialog.c(98): warning C4024: sprintf_s: различные типы для формального и фактического параметров 2
-     1>c:\users\user\documents\bank\bank\dialog.c(98): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "int"
-     1>c:\users\user\documents\bank\bank\dialog.c(98): warning C4024: sprintf_s: различные типы для формального и фактического параметров 3
-     1>c:\users\user\documents\bank\bank\dialog.c(160): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
-     1>c:\users\user\documents\bank\bank\dialog.c(246): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(255): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(273): warning C4101: clientId: неиспользованная локальная переменная
-     1>c:\users\user\documents\bank\bank\dialog.c(301): warning C4101: client: неиспользованная локальная переменная
-     1>c:\users\user\documents\bank\bank\dialog.c(324): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(332): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(448): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(448): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(450): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(450): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(452): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(452): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(454): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(454): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(456): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(456): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(458): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(458): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(459): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(459): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(461): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(462): warning C4047: =: "void *" отличается по уровням косвенного обращения от "int"
-     1>c:\users\user\documents\bank\bank\dialog.c(464): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(465): warning C4047: =: "void *" отличается по уровням косвенного обращения от "int"
-     1>c:\users\user\documents\bank\bank\dialog.c(467): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(467): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(469): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(469): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(471): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(471): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(473): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(473): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(476): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(476): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(478): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(478): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(480): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(480): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(481): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(481): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(483): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(483): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(485): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(485): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(487): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(487): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-     1>c:\users\user\documents\bank\bank\dialog.c(489): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
-     1>c:\users\user\documents\bank\bank\dialog.c(489): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
-         Создание кода...
-     1>c:\users\user\documents\bank\bank\dialog.c(310): warning C4717: UpdateClient: рекурсия на всех путях выполнения, функция вызовет переполнение стека
-       Link:
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Documents\Bank\Debug\UnitTests.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\Documents\Bank\Debug\UnitTests.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Documents\Bank\Debug\UnitTests.lib" /MACHINE:X86 Debug\Database.obj
          Debug\Dialog.obj
          Debug\sqlite3.obj
@@ -86,4 +11,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.32
+Затраченное время: 00:00:00.59

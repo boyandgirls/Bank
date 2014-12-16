@@ -77,17 +77,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\UnitTests\Database.c" />
-    <ClCompile Include="..\UnitTests\Dialog.c" />
-    <ClCompile Include="..\UnitTests\sqlite3.c" />
-    <ClCompile Include="..\UnitTests\Tests.c" />
+    <ClCompile Include="Database.c" />
+    <ClCompile Include="Dialog.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\UnitTests\Database.h" />
-    <ClInclude Include="..\UnitTests\Dialog.h" />
-    <ClInclude Include="..\UnitTests\sqlite3.h" />
     <ClInclude Include="..\UnitTests\Tests.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="Dialog.h" />
+    <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

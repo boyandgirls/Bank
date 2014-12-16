@@ -18,30 +18,27 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\UnitTests\Database.c">
+    <ClCompile Include="Database.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\UnitTests\Dialog.c">
+    <ClCompile Include="Dialog.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\UnitTests\Tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\UnitTests\sqlite3.c">
+    <ClCompile Include="sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\UnitTests\Dialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\UnitTests\Database.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\UnitTests\sqlite3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\UnitTests\Tests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,24 +18,30 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dialog.c">
+    <ClCompile Include="..\UnitTests\Database.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Database.c">
+    <ClCompile Include="..\UnitTests\Dialog.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sqlite3.c">
+    <ClCompile Include="..\UnitTests\Tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UnitTests\sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dialog.h">
+    <ClInclude Include="..\UnitTests\Dialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Database.h">
+    <ClInclude Include="..\UnitTests\Database.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sqlite3.h">
+    <ClInclude Include="..\UnitTests\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UnitTests\Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -58,9 +58,9 @@ void Credit(void *m){
 	int mul = (int)m;
 	float amount;
 	printf("Card ID: ");
-	scanf("%d", &cardId);
+	scanf_s("%d", &cardId);
 	printf("Amount: ");
-	scanf("%f", &amount);
+	scanf_s("%f", &amount);
 	if (CreditMoney(cardId, mul*amount)){
 		printf("Transaction succeed\n");
 	}
@@ -82,20 +82,20 @@ void WatchClientByPassportNumber(){
 	Client client;
 	char header[300];
 	printf("Passport Number: ");
-	scanf("%d", &passportId);
+	scanf_s("%d", &passportId);
 	client = GetClient(passportId);
 	accounts = malloc(sizeof(MenuItem)*(client.AccountAmount + 1));
 	accounts[client.AccountAmount].action = &Back;
 	accounts[client.AccountAmount].args = &cycle;
 	accounts[client.AccountAmount].displayName = "Back";
 	if (client.Id != INVALID){
-		sprintf(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
+		sprintf_s(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
 		cycle = 1;
 		for (i = 0; i < client.AccountAmount; i++){
 			accounts[i].displayName = malloc(sizeof(char) * 30);
 			accounts[i].action = &ShowAccount;
 			accounts[i].args = (void*)(&client.Accounts[i]);
-			sprintf(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
+			sprintf_s(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
 		}
 
 		while (cycle) {
@@ -111,9 +111,9 @@ void WatchClientByPassportNumber(){
 void LoginDialog(){
 	char login[100], password[100];
 	printf("Login: ");
-	scanf("%s", login);
+	scanf_s("%s", login);
 	printf("Password: ");
-	scanf("%s", password);
+	scanf_s("%s", password);
 	currentUser = GetUser(login, password);
 	if (currentUser.Role == INVALID){
 		printf("User or password are incorrect\n");
@@ -133,9 +133,9 @@ void AddAccount(){
 	char currency[10];
 	int clientId;
 	printf("Input currency.\n");
-	scanf("%s", currency);
+	scanf_s("%s", currency);
 	printf("Input client Id.\n");
-	scanf("%d", &clientId);
+	scanf_s("%d", &clientId);
 	if (AddAccountToDB(currency, clientId) == 0)
 	{
 		printf("Account created.\n");
@@ -148,7 +148,7 @@ void AddAccount(){
 void DeleteAccount(){
 	int accountId;
 	printf("Input account Id.\n");
-	scanf("%d", &accountId);
+	scanf_s("%d", &accountId);
 	if (DeleteAccountFromDB(accountId) == 0)
 	{
 		printf("Account deleted.\n");
@@ -161,11 +161,12 @@ void AddCard(){
 	int accountId, cvv = rand() % 1000;
 	char ownerName[100], expiredDate[11];
 	time_t t = time(NULL);
+	
 	struct tm tm = *localtime(&t);
 	printf("Input account Id.\n");
-	scanf("%d", &accountId);
+	scanf_s("%d", &accountId);
 	printf("Input owner name.\n");
-	scanf(" %99[^\n]", ownerName);
+	scanf_s(" %99[^\n]", ownerName);
 	sprintf(expiredDate, "%d.%d.%d", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1910);
 	if (AddCardToDB(accountId, ownerName, expiredDate, cvv) == 0)
 	{
@@ -177,7 +178,7 @@ void AddCard(){
 void DeleteCard() {
 	int cardId;
 	printf("Input card Id.\n");
-	scanf("%d", &cardId);
+	scanf_s("%d", &cardId);
 	if (DeleteCardFromDB(cardId) == 0)
 	{
 		printf("Card deleted.\n");
@@ -189,7 +190,7 @@ void WatchAccountInfoByAccountId(){
 	int accountId;
 	Account account;
 	printf("Account Id: ");
-	scanf("%d", &accountId);
+	scanf_s("%d", &accountId);
 	account = GetAccountInfoByAccountId(accountId);
 	if (account.Id != INVALID)
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
@@ -202,7 +203,7 @@ void WatchAccountInfoByCardId(){
 	int cardId;
 	Account account;
 	printf("Card Id: ");
-	scanf("%d", &cardId);
+	scanf_s("%d", &cardId);
 	account = GetAccountInfoByCardId(cardId);
 	if (account.Id != INVALID)
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
@@ -215,7 +216,7 @@ void WatchCardInfoByCardId(){
 	int cardId;
 	Card card;
 	printf("Card Id: ");
-	scanf("%d", &cardId);
+	scanf_s("%d", &cardId);
 	card = GetCardInfoByCardId(cardId);
 	if (card.Id != INVALID)
 		printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
@@ -237,7 +238,7 @@ void WatchClientCardsByPassportNumber(){
 	char header[300];
 	int CardAmount = 0;
 	printf("Passport Number: ");
-	scanf("%d", &passportId);
+	scanf_s("%d", &passportId);
 	client = GetClientCards(passportId);
 	for (i = 0; i < client.AccountAmount; i++)
 		CardAmount += client.Accounts[i].CardAmount;
@@ -272,9 +273,9 @@ void AddClient()
 	int clientId;
 	char firstName[120], lastName[120];
 	printf("Input client's first name.\n");
-	scanf("%s", firstName);
+	scanf_s("%s", firstName);
 	printf("Input client's last name.\n");
-	scanf("%s", lastName);
+	scanf_s("%s", lastName);
 	if (AddClientToDB(firstName, lastName) == 0)
 	{
 		printf("Client added to the database.\n");
@@ -286,7 +287,7 @@ void DeleteClient()
 {
 	int clientId;
 	printf("Input client Id.\n");
-	scanf("%d", &clientId);
+	scanf_s("%d", &clientId);
 	if (DeleteClientFromDB(clientId) == 0)
 	{
 		printf("Client deleted.\n");
@@ -300,11 +301,11 @@ void UpdateClient()
 	Client client;
 	char firstName[20], lastName[20];
 	printf("Input client Id.\n");
-	scanf("%d", &clientId);
+	scanf_s("%d", &clientId);
 	printf("Input client's first name.\n");
-	scanf("%s", firstName);
+	scanf_s("%s", firstName);
 	printf("Input client's last name.\n");
-	scanf("%s", lastName);
+	scanf_s("%s", lastName);
 	UpdateClient(clientId, firstName, lastName);
 }
 
@@ -315,7 +316,7 @@ void WatchClientByCard()
 	Client client;
 	char header[300];
 	printf("Card ID: ");
-	scanf("%d", &CardId);
+	scanf_s("%d", &CardId);
 	if(CardExists(CardId)!=0)
 	{
 		client = GetClientByCardID(CardId);
@@ -391,11 +392,11 @@ void AdministratorMenu(){
 void ChangeFeeAndQuotes(){
 	int Fee, Quota, AccountId;
 	printf("Input account ID\n");
-	scanf("%d", &AccountId);
+	scanf_s("%d", &AccountId);
 	printf("Input fee value\n");
-	scanf("%d", &Fee);
+	scanf_s("%d", &Fee);
 	printf("Input quote value\n");
-	scanf("%d", &Quota);
+	scanf_s("%d", &Quota);
 	if (ChangeFeeAndQuotesInAccount(AccountId, Fee, Quota) == 0)
 		printf("Successful\n");
 	else
@@ -408,9 +409,9 @@ void ChangeCurrency(){
 	char Currency[5];
 	int ClientId;
 	printf("Input value of currency\n");
-	scanf("%s", &Currency);
+	scanf_s("%s", &Currency);
 	printf("Input client ID\n");
-	scanf("%d", &ClientId);
+	scanf_s("%d", &ClientId);
 	if (ChangeCurrencyInAccount(Currency, ClientId) == 0)
 		printf("Currency changed succsesful\n");
 	else printf("Error in changing currency\n");
@@ -419,7 +420,7 @@ void ChangeCurrency(){
 void BlockCard(){
 	int CardId;
 	printf("Input card ID\n");
-	scanf("%d", &CardId);
+	scanf_s("%d", &CardId);
 	if (BlockCardInDB(CardId) == 0)
 	{
 		printf("Card is blocked.\n");
@@ -431,7 +432,7 @@ void BlockCard(){
 void UnblockCard(){
 	int CardId;
 	printf("Input card ID\n");
-	scanf("%d", &CardId);
+	scanf_s("%d", &CardId);
 	if (UnblockCardInDB(CardId) == 0)
 	{
 		printf("Card is unblocked.\n");

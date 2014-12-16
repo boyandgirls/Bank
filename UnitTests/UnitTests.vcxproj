@@ -69,6 +69,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Bank\Database.c" />
+    <ClCompile Include="..\Bank\Dialog.c" />
     <ClCompile Include="..\Bank\sqlite3.c" />
     <ClCompile Include="mainTests.c" />
     <ClCompile Include="Tests.c" />
@@ -79,6 +80,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Bank\Database.h" />
+    <ClInclude Include="..\Bank\Dialog.h" />
+    <ClInclude Include="..\Bank\sqlite3.h" />
     <ClInclude Include="Tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

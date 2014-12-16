@@ -59,7 +59,8 @@ Client GetClient(int clientId){
 
 	sprintf(query2, "SELECT COUNT(*) FROM Account WHERE Client_ClientId = %d", clientId);
 	sqlite3_prepare(db, query2, -1, &statement, 0);
-	if (sqlite3_step(statement) == SQLITE_ROW) client.AccountAmount = sqlite3_column_int(statement, 0);
+	if (sqlite3_step(statement) == SQLITE_ROW) 
+		client.AccountAmount = sqlite3_column_int(statement, 0);
 	sqlite3_finalize(statement);
 
 	if (client.AccountAmount) client.Accounts = malloc(sizeof(account)*client.AccountAmount);
@@ -355,7 +356,7 @@ int UpdateClientInDB(int clientId, char* firstName, char* lastName)
 	if (ClientExists(clientId, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
-		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID=", *number;
+		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID=", *number = 0;
 		itoa(clientId, number, 10);
 		sqlite3_prepare(db, strcat(query, number), -1, &stmt, 0);
 		sqlite3_bind_text(stmt, 1, firstName, -1, 0);

@@ -1,13 +1,12 @@
 #include "Dialog.h"
 #include "Database.h"
-#include "Tests.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 int running;
 UserInfo currentUser;
-MenuItem runtests, logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
+MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
 watchcardbycardid, addclient, deleteclient, watchclientbycard, updateclient, blockcard, unblockcard, changecurrency, changefeeandquotes;
 MenuItem deleteClientTest, addCardTest, getClientTest, creditTest;
@@ -309,22 +308,6 @@ void UpdateClient()
 	UpdateClient(clientId, firstName, lastName);
 }
 
-void RunTests()
-{
-	int testsNumber = 4;
-	MenuItem * tests = (MenuItem *)malloc(sizeof(MenuItem)*(testsNumber));
-	tests[0] = deleteClientTest;
-	tests[1] = addCardTest;
-	tests[2] = getClientTest;
-	tests[3] = creditTest;
-	for (int i = 0; i < testsNumber; i++)
-	{		
-		int result = (int)tests[i].action(NULL);
-		printf("%s: %s\n", tests[i].displayName, result == SUCCESS ? "Successful" : "Failed");
-	}	
-	system("pause");
-}
-
 void WatchClientByCard()
 {
 	int i = 0, cycle, CardId;
@@ -379,7 +362,7 @@ void OperatorMenu(){
 }
 
 void AdministratorMenu(){
-	int n = 20;
+	int n = 19;
 	char buffer[250];
 	sprintf(buffer, "%s %s, %s", currentUser.FirstName, currentUser.LastName, "Administrator");
 	MenuItem *menuItems = malloc(n * sizeof(MenuItem));
@@ -396,25 +379,13 @@ void AdministratorMenu(){
 	menuItems[10] = deleteclient;
 	menuItems[11] = watchclientbycard;
 	menuItems[12] = updateclient;
-	menuItems[13] = runtests;
-	menuItems[14] = blockcard;
-	menuItems[15] = unblockcard;
-	menuItems[16] = changecurrency;
-	menuItems[17] = changefeeandquotes;
+	menuItems[13] = blockcard;
+	menuItems[14] = unblockcard;
+	menuItems[15] = changecurrency;
+	menuItems[16] = changefeeandquotes;
 	menuItems[n - 2] = logoff;
 	menuItems[n - 1] = exitoption;
 	Menu(menuItems, n, buffer);
-}
-
-void InitializeTests(){
-	deleteClientTest.displayName = "Delete Client Test";
-	deleteClientTest.action = &DeleteClientTest;
-	addCardTest.displayName = "Add Card Test";
-	addCardTest.action = &AddCardTest;
-	getClientTest.displayName = "Get Client Test";
-	getClientTest.action = &GetClientTest;
-	creditTest.action = &CreditTest;
-	creditTest.displayName = "Credit Test";
 }
 
 void ChangeFeeAndQuotes(){
@@ -508,8 +479,6 @@ void InitializeDialog(){
 	watchclientbycard.action= &WatchClientByCard;
 	updateclient.action= &UpdateClient;
 	updateclient.displayName="Update client";
-	runtests.displayName = "Run tests";
-	runtests.action = &RunTests;
 	blockcard.action = &BlockCard;
 	blockcard.displayName = "Block card";
 	unblockcard.action = &UnblockCard;
@@ -517,8 +486,7 @@ void InitializeDialog(){
 	changecurrency.action = &ChangeCurrency;
 	changecurrency.displayName = "Change currency in Account";
 	changefeeandquotes.action = &ChangeFeeAndQuotes;
-	changefeeandquotes.displayName = "Change fee and quotes in Account";
-	InitializeTests();
+	changefeeandquotes.displayName = "Change fee and quotes in Account";	
 }
 
 void Dialog(){

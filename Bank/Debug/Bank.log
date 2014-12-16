@@ -1,20 +1,147 @@
-﻿Сборка начата 15.12.2014 0:15:50.
+﻿Сборка начата 16.12.2014 17:24:19.
      1>Проект "C:\Users\User\Documents\Bank\Bank\Bank.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Tests.c
-         Tests.c
-     1>c:\users\user\documents\bank\bank\tests.c(39): warning C4013: sprintf: нет определения; предполагается "extern" с возвратом типа "int"
-     1>c:\users\user\documents\bank\bank\tests.c(43): warning C4013: strcpy: нет определения; предполагается "extern" с возвратом типа "int"
-     1>c:\users\user\documents\bank\bank\tests.c(47): warning C4013: strcmp: нет определения; предполагается "extern" с возвратом типа "int"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Dialog.c
+         Dialog.c
+     1>c:\users\user\documents\bank\bank\dialog.c(16): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
+     1>c:\users\user\documents\bank\bank\dialog.c(61): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(63): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(85): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(88): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(92): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(96): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(98): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(114): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(116): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(136): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(138): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(151): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(160): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
+     1>c:\users\user\documents\bank\bank\dialog.c(164): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\time.inl(112): см. объявление "localtime"
+     1>c:\users\user\documents\bank\bank\dialog.c(166): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(168): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(169): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(180): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(192): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(205): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(218): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(240): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(245): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(249): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(254): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(256): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(275): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(277): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(272): warning C4101: clientId: неиспользованная локальная переменная
+     1>c:\users\user\documents\bank\bank\dialog.c(289): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(303): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(305): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(307): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(300): warning C4101: client: неиспользованная локальная переменная
+     1>c:\users\user\documents\bank\bank\dialog.c(318): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(323): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(int *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(327): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(331): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(333): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(355): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(367): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): см. объявление "sprintf"
+     1>c:\users\user\documents\bank\bank\dialog.c(394): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(396): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(398): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(411): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(413): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(422): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(434): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\user\documents\bank\bank\dialog.c(447): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(447): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(449): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(449): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(451): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(451): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(453): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(453): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(455): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(455): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(457): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(457): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(458): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(458): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(460): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(461): warning C4047: =: "void *" отличается по уровням косвенного обращения от "int"
+     1>c:\users\user\documents\bank\bank\dialog.c(463): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(464): warning C4047: =: "void *" отличается по уровням косвенного обращения от "int"
+     1>c:\users\user\documents\bank\bank\dialog.c(466): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(466): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(468): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(468): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(470): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(470): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(472): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(472): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(475): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(475): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(477): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(477): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(479): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(479): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(480): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(480): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(482): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(482): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(484): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(484): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(486): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(486): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(488): warning C4113: "void (__cdecl *)()" отличается в списках параметров от "void *(__cdecl *)(void *)"
+     1>c:\users\user\documents\bank\bank\dialog.c(488): warning C4047: =: "void *(__cdecl *)(void *)" отличается по уровням косвенного обращения от "void (__cdecl *)()"
+     1>c:\users\user\documents\bank\bank\dialog.c(309): warning C4717: UpdateClient: рекурсия на всех путях выполнения, функция вызовет переполнение стека
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Documents\Bank\Debug\Bank.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\Documents\Bank\Debug\Bank.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Documents\Bank\Debug\Bank.lib" /MACHINE:X86 Debug\Database.obj
          Debug\Dialog.obj
          Debug\main.obj
          Debug\sqlite3.obj
-         Debug\Tests.obj
          Bank.vcxproj -> C:\Users\User\Documents\Bank\Debug\Bank.exe
      1>Сборка проекта "C:\Users\User\Documents\Bank\Bank\Bank.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.71
+Затраченное время: 00:00:02.24

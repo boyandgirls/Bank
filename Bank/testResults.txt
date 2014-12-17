@@ -1,4 +1,0 @@
-Delete Client Test: Successful
-Add Card Test: Successful
-Get Client Test: Successful
-Credit Test: Successful

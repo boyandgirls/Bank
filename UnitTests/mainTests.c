@@ -30,14 +30,14 @@ void runTests()
 	{		
 		int result = (int)tests[i].action(NULL);
 		if (!result) ok = 0;
-		fprintf(f, "%s: %s\n", tests[i].displayName, result == SUCCESS ? "Successful" : "Failed");
+		fprintf(f, "<p>%s: %s</p>\n", tests[i].displayName, result == SUCCESS ? "Passed" : "Failed");
 	}		
 }
 
 int main()
 {
 	InitializeDatabase();
-	fopen_s(&f, "testResults.txt", "wt");
+	fopen_s(&f, "testResults.html", "wt");
 	initializeTests();
 	runTests();
 	fclose(f);

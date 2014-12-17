@@ -41,3 +41,22 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+Bank.sdf
+Debug/Bank.exe
+Bank/Debug/Bank.log
+Bank/Debug/Bank.tlog/Bank.lastbuildstate
+Bank/Debug/Bank.tlog/cl.command.1.tlog
+Debug/Bank.pdb
+Debug/UnitTests.pdb
+UnitTests/Release/vc120.pdb
+UnitTests/Release/UnitTests.tlog/link.write.1.tlog
+UnitTests/Release/UnitTests.tlog/link.read.1.tlog
+UnitTests/Release/UnitTests.tlog/link.command.1.tlog
+UnitTests/Release/UnitTests.tlog/CL.write.1.tlog
+UnitTests/Release/UnitTests.tlog/UnitTests.lastbuildstate
+UnitTests/Release/UnitTests.log
+UnitTests/Release/Tests.obj
+UnitTests/Release/sqlite3.obj
+UnitTests/Release/mainTests.obj
+Bank/Debug/Bank.tlog/CL.read.1.tlog

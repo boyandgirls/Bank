@@ -1,0 +1,101 @@
+﻿Build started 17.12.2014 20:20:25.
+     1>Project "D:\Учёба\ТП\Bank\Bank\Bank.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\VS2013\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Database.c Dialog.c main.c sqlite3.c
+         Database.c
+     1>Database.c(15): warning C4013: 'sprintf' undefined; assuming extern returning int
+     1>Database.c(29): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Database.c(66): warning C4013: 'malloc' undefined; assuming extern returning int
+     1>Database.c(66): warning C4047: '=' : 'Account *' differs in levels of indirection from 'int'
+     1>Database.c(73): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Database.c(107): warning C4013: 'printf' undefined; assuming extern returning int
+     1>Database.c(108): warning C4013: 'system' undefined; assuming extern returning int
+     1>Database.c(215): warning C4047: '=' : 'Card *' differs in levels of indirection from 'int'
+     1>Database.c(244): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Database.c(285): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Database.c(327): warning C4013: 'atoi' undefined; assuming extern returning int
+     1>Database.c(346): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Database.c(360): warning C4013: 'itoa' undefined; assuming extern returning int
+     1>Database.c(390): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>Database.c(390): warning C4024: 'sqlite3_prepare' : different types for formal and actual parameter 2
+     1>Database.c(391): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>Database.c(391): warning C4024: 'sqlite3_bind_text' : different types for formal and actual parameter 3
+     1>Database.c(392): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>Database.c(392): warning C4024: 'sqlite3_bind_text' : different types for formal and actual parameter 3
+         Dialog.c
+     1>Dialog.c(16): warning C4013: 'getch' undefined; assuming extern returning int
+     1>Dialog.c(88): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>Dialog.c(92): warning C4047: 'function' : 'size_t' differs in levels of indirection from 'char [44]'
+     1>Dialog.c(92): warning C4024: 'sprintf_s' : different types for formal and actual parameter 2
+     1>Dialog.c(92): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>Dialog.c(92): warning C4024: 'sprintf_s' : different types for formal and actual parameter 3
+     1>Dialog.c(96): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>Dialog.c(98): warning C4047: 'function' : 'size_t' differs in levels of indirection from 'char [11]'
+     1>Dialog.c(98): warning C4024: 'sprintf_s' : different types for formal and actual parameter 2
+     1>Dialog.c(98): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>Dialog.c(98): warning C4024: 'sprintf_s' : different types for formal and actual parameter 3
+     1>Dialog.c(160): warning C4244: 'function' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>Dialog.c(246): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>Dialog.c(255): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>Dialog.c(273): warning C4101: 'clientId' : unreferenced local variable
+     1>Dialog.c(301): warning C4101: 'client' : unreferenced local variable
+     1>Dialog.c(324): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>Dialog.c(332): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>Dialog.c(448): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(448): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(450): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(450): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(452): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(452): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(454): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(454): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(456): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(456): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(458): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(458): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(459): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(459): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(461): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>Dialog.c(462): warning C4047: '=' : 'void *' differs in levels of indirection from 'int'
+     1>Dialog.c(464): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>Dialog.c(465): warning C4047: '=' : 'void *' differs in levels of indirection from 'int'
+     1>Dialog.c(467): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(467): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(469): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(469): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(471): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(471): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(473): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(473): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(476): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(476): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(478): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(478): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(480): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(480): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(481): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(481): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(483): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(483): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(485): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(485): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(487): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(487): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>Dialog.c(489): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>Dialog.c(489): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+         main.c
+         sqlite3.c
+       Link:
+         D:\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Учёба\ТП\Bank\Release\Bank.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Учёба\ТП\Bank\Release\Bank.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Учёба\ТП\Bank\Release\Bank.lib" /MACHINE:X86 /SAFESEH Release\Database.obj
+         Release\Dialog.obj
+         Release\main.obj
+         Release\sqlite3.obj
+         Generating code
+     1>d:\учёба\тп\bank\bank\dialog.c(310): warning C4717: 'UpdateClient' : recursive on all control paths, function will cause runtime stack overflow
+         Finished generating code
+         Bank.vcxproj -> D:\Учёба\ТП\Bank\Release\Bank.exe
+     1>Done Building Project "D:\Учёба\ТП\Bank\Bank\Bank.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:22.76

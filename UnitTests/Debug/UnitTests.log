@@ -1,4 +1,4 @@
-﻿Build started 17.12.2014 19:54:36.
+﻿Build started 17.12.2014 20:21:16.
      1>Project "D:\Учёба\ТП\Bank\UnitTests\UnitTests.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\VS2013\VC\bin\CL.exe /c /I"D:\Учёба\ТП\Bank\\Bank\\" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\Bank\Database.c ..\Bank\Dialog.c ..\Bank\sqlite3.c mainTests.c Tests.c
@@ -110,10 +110,9 @@
          Debug\sqlite3.obj
          Debug\mainTests.obj
          Debug\Tests.obj
-         LINK : D:\Учёба\ТП\Bank\Debug\UnitTests.exe not found or not built by the last incremental link; performing full link
          UnitTests.vcxproj -> D:\Учёба\ТП\Bank\Debug\UnitTests.exe
      1>Done Building Project "D:\Учёба\ТП\Bank\UnitTests\UnitTests.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:12.25
+Time Elapsed 00:00:03.45

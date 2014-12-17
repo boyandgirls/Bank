@@ -1,14 +1,119 @@
-﻿Сборка начата 16.12.2014 19:40:29.
-     1>Проект "C:\Users\User\Documents\Bank\UnitTests\UnitTests.vcxproj" в узле 2 (целевые объекты Build).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Documents\Bank\Debug\UnitTests.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\Documents\Bank\Debug\UnitTests.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Documents\Bank\Debug\UnitTests.lib" /MACHINE:X86 Debug\Database.obj
+﻿Build started 17.12.2014 19:54:36.
+     1>Project "D:\Учёба\ТП\Bank\UnitTests\UnitTests.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\VS2013\VC\bin\CL.exe /c /I"D:\Учёба\ТП\Bank\\Bank\\" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\Bank\Database.c ..\Bank\Dialog.c ..\Bank\sqlite3.c mainTests.c Tests.c
+         Tests.c
+     1>d:\учёба\тп\bank\unittests\tests.c(39): warning C4013: 'sprintf' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\unittests\tests.c(43): warning C4013: 'strcpy' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\unittests\tests.c(47): warning C4013: 'strcmp' undefined; assuming extern returning int
+         mainTests.c
+     1>d:\учёба\тп\bank\unittests\maintests.c(12): warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\unittests\maintests.c(12): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'int (__cdecl *)()'
+     1>d:\учёба\тп\bank\unittests\maintests.c(14): warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\unittests\maintests.c(14): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'int (__cdecl *)()'
+     1>d:\учёба\тп\bank\unittests\maintests.c(16): warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\unittests\maintests.c(16): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'int (__cdecl *)()'
+     1>d:\учёба\тп\bank\unittests\maintests.c(17): warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\unittests\maintests.c(17): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'int (__cdecl *)()'
+     1>d:\учёба\тп\bank\unittests\maintests.c(24): warning C4013: 'malloc' undefined; assuming extern returning int
+         sqlite3.c
+         Dialog.c
+     1>d:\учёба\тп\bank\bank\dialog.c(16): warning C4013: 'getch' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\dialog.c(88): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(92): warning C4047: 'function' : 'size_t' differs in levels of indirection from 'char [44]'
+     1>d:\учёба\тп\bank\bank\dialog.c(92): warning C4024: 'sprintf_s' : different types for formal and actual parameter 2
+     1>d:\учёба\тп\bank\bank\dialog.c(92): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\dialog.c(92): warning C4024: 'sprintf_s' : different types for formal and actual parameter 3
+     1>d:\учёба\тп\bank\bank\dialog.c(96): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(98): warning C4047: 'function' : 'size_t' differs in levels of indirection from 'char [11]'
+     1>d:\учёба\тп\bank\bank\dialog.c(98): warning C4024: 'sprintf_s' : different types for formal and actual parameter 2
+     1>d:\учёба\тп\bank\bank\dialog.c(98): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\dialog.c(98): warning C4024: 'sprintf_s' : different types for formal and actual parameter 3
+     1>d:\учёба\тп\bank\bank\dialog.c(160): warning C4244: 'function' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>d:\учёба\тп\bank\bank\dialog.c(246): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(255): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(273): warning C4101: 'clientId' : unreferenced local variable
+     1>d:\учёба\тп\bank\bank\dialog.c(301): warning C4101: 'client' : unreferenced local variable
+     1>d:\учёба\тп\bank\bank\dialog.c(324): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(int *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(332): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(448): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(448): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(450): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(450): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(452): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(452): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(454): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(454): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(456): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(456): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(458): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(458): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(459): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(459): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(461): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(462): warning C4047: '=' : 'void *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\dialog.c(464): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(465): warning C4047: '=' : 'void *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\dialog.c(467): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(467): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(469): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(469): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(471): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(471): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(473): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(473): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(476): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(476): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(478): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(478): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(480): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(480): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(481): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(481): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(483): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(483): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(485): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(485): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(487): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(487): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+     1>d:\учёба\тп\bank\bank\dialog.c(489): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void *(__cdecl *)(void *)'
+     1>d:\учёба\тп\bank\bank\dialog.c(489): warning C4047: '=' : 'void *(__cdecl *)(void *)' differs in levels of indirection from 'void (__cdecl *)()'
+         Database.c
+     1>d:\учёба\тп\bank\bank\database.c(15): warning C4013: 'sprintf' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(29): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\учёба\тп\bank\bank\database.c(55): warning C4013: 'strcpy' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(66): warning C4013: 'malloc' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(66): warning C4047: '=' : 'Account *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(73): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\учёба\тп\bank\bank\database.c(107): warning C4013: 'printf' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(108): warning C4013: 'system' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(215): warning C4047: '=' : 'Card *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(244): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\учёба\тп\bank\bank\database.c(285): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\учёба\тп\bank\bank\database.c(327): warning C4013: 'atoi' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(346): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\учёба\тп\bank\bank\database.c(360): warning C4013: 'itoa' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(361): warning C4013: 'strcat' undefined; assuming extern returning int
+     1>d:\учёба\тп\bank\bank\database.c(361): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(361): warning C4024: 'sqlite3_prepare' : different types for formal and actual parameter 2
+     1>d:\учёба\тп\bank\bank\database.c(390): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(390): warning C4024: 'sqlite3_prepare' : different types for formal and actual parameter 2
+     1>d:\учёба\тп\bank\bank\database.c(391): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(391): warning C4024: 'sqlite3_bind_text' : different types for formal and actual parameter 3
+     1>d:\учёба\тп\bank\bank\database.c(392): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>d:\учёба\тп\bank\bank\database.c(392): warning C4024: 'sqlite3_bind_text' : different types for formal and actual parameter 3
+         Generating Code...
+     1>d:\учёба\тп\bank\bank\dialog.c(310): warning C4717: 'UpdateClient' : recursive on all control paths, function will cause runtime stack overflow
+       Link:
+         D:\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Учёба\ТП\Bank\Debug\UnitTests.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Учёба\ТП\Bank\Debug\UnitTests.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Учёба\ТП\Bank\Debug\UnitTests.lib" /MACHINE:X86 Debug\Database.obj
          Debug\Dialog.obj
          Debug\sqlite3.obj
          Debug\mainTests.obj
          Debug\Tests.obj
-         UnitTests.vcxproj -> C:\Users\User\Documents\Bank\Debug\UnitTests.exe
-     1>Сборка проекта "C:\Users\User\Documents\Bank\UnitTests\UnitTests.vcxproj" завершена (целевые объекты Build).
+         LINK : D:\Учёба\ТП\Bank\Debug\UnitTests.exe not found or not built by the last incremental link; performing full link
+         UnitTests.vcxproj -> D:\Учёба\ТП\Bank\Debug\UnitTests.exe
+     1>Done Building Project "D:\Учёба\ТП\Bank\UnitTests\UnitTests.vcxproj" (Build target(s)).
 
-Сборка успешно завершена.
+Build succeeded.
 
-Затраченное время: 00:00:00.59
+Time Elapsed 00:00:12.25

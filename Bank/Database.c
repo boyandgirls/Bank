@@ -19,6 +19,7 @@ void IncreaseTransactions(int cardId) {
 }
 
 int CreditMoney(int cardId, float amount) {
+	amount = 0;
 	char query1[300], query2[300];
 	sqlite3_stmt *statement;
 	float balance;

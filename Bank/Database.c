@@ -2,7 +2,7 @@
 
 
 void InitializeDatabase(){
-	sqlite3_open("Database\\BankDatabase.db", &db);
+	sqlite3_open("Database/BankDatabase.db", &db);
 }
 
 void CloseDatabase(){
@@ -356,11 +356,11 @@ int UpdateClientInDB(int clientId, char* firstName, char* lastName)
 	if (ClientExists(clientId, 1) != 0)
 	{
 		sqlite3_stmt *stmt;
-		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID=", *number = 0;
-		itoa(clientId, number, 10);
+		char *query="UPDATE CLIENT SET FIRSTNAME = (?), LASTNAME = (?) WHERE CLIENTID= (?)", *number = 0;
 		sqlite3_prepare(db, strcat(query, number), -1, &stmt, 0);
 		sqlite3_bind_text(stmt, 1, firstName, -1, 0);
 		sqlite3_bind_text(stmt, 2, lastName, -1, 0);
+                sqlite3_bind_int(stmt, 3, clientId);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 		return 0;

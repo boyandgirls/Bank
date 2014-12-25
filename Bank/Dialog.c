@@ -18,7 +18,7 @@ watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, w
 watchcardbycardid, addclient, deleteclient, watchclientbycard, updateclient, blockcard, unblockcard, changecurrency, changefeeandquotes;
 MenuItem deleteClientTest, addCardTest, getClientTest, creditTest;
 
-void pause(){
+void system_pause(){
 	printf("Press any key to continue\n");
 	getch();
 }
@@ -79,13 +79,13 @@ void Credit(void *m){
 	else {
 		printf("Transaction failed\n");
 	}
-	pause();
+	system_pause();
 }
 
 void ShowAccount(void* account){
 	Account* acc = (Account*)account;
 	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", acc->Id, acc->Currency, acc->Balance);
-	pause();
+	system_pause();
 }
 
 void WatchClientByPassportNumber(){
@@ -116,7 +116,7 @@ void WatchClientByPassportNumber(){
 	}
 	else {
 		printf("Client is not found\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -129,7 +129,7 @@ void LoginDialog(){
 	currentUser = GetUser(login, password);
 	if (currentUser.Role == INVALID){
 		printf("User or password are incorrect\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -151,7 +151,7 @@ void AddAccount(){
 	if (AddAccountToDB(currency, clientId) == 0)
 	{
 		printf("Account created.\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -164,7 +164,7 @@ void DeleteAccount(){
 	if (DeleteAccountFromDB(accountId) == 0)
 	{
 		printf("Account deleted.\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -183,7 +183,7 @@ void AddCard(){
 	if (AddCardToDB(accountId, ownerName, expiredDate, cvv) == 0)
 	{
 		printf("Card created. CVV is %d. Expiration Date is %s\n", cvv, expiredDate);
-		pause();
+		system_pause();
 	}
 }
 
@@ -194,7 +194,7 @@ void DeleteCard() {
 	if (DeleteCardFromDB(cardId) == 0)
 	{
 		printf("Card deleted.\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -208,7 +208,7 @@ void WatchAccountInfoByAccountId(){
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
 	else
 		printf("Account not found\n");
-	pause();
+	system_pause();
 }
 
 void WatchAccountInfoByCardId(){
@@ -221,7 +221,7 @@ void WatchAccountInfoByCardId(){
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
 	else
 		printf("Account not found\n");
-	pause();
+	system_pause();
 }
 
 void WatchCardInfoByCardId(){
@@ -234,13 +234,13 @@ void WatchCardInfoByCardId(){
 		printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
 	else
 		printf("Card not found\n");
-	pause();
+	system_pause();
 }
 
 void ShowCard(void* card){
 	Card* c = (Card*)card;
 	printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", c->Id, c->CVV, c->CardOwnerID, c->ExpirationDate, c->TotalTransactions);
-	pause();
+	system_pause();
 }
 
 void WatchClientCardsByPassportNumber(){
@@ -276,7 +276,7 @@ void WatchClientCardsByPassportNumber(){
 	}
 	else {
 		printf("Client is not found\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -291,7 +291,7 @@ void AddClient()
 	if (AddClientToDB(firstName, lastName) == 0)
 	{
 		printf("Client added to the database.\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -303,7 +303,7 @@ void DeleteClient()
 	if (DeleteClientFromDB(clientId) == 0)
 	{
 		printf("Client deleted.\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -352,13 +352,13 @@ void WatchClientByCard()
 		}
 		else {
 			printf("Client is not found\n");
-			pause();
+			system_pause();
 		}
 	}
 	else
 	{
 		printf("Client is not found\n");
-		pause();
+		system_pause();
 	}
 }
 
@@ -438,7 +438,7 @@ void BlockCard(){
 		printf("Card is blocked.\n");
 	}
 	else printf("Error in blocking card.\n");
-	pause();
+	system_pause();
 }
 
 void UnblockCard(){
@@ -450,7 +450,7 @@ void UnblockCard(){
 		printf("Card is unblocked.\n");
 	}
 	else printf("Error in blocking card.\n");
-	pause();
+	system_pause();
 }
 
 void InitializeDialog(){
@@ -505,7 +505,7 @@ void InitializeDialog(){
 void Dialog(){
 	InitializeDialog();
 	while (running){
-		system("cls");
+		system(CLEAR);
 		switch (currentUser.Role){
 		case ADMINISTRATOR:
 			AdministratorMenu();

@@ -3,6 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#ifdef _WIN32
+#define CLEAR "cls"
+#else
+#define CLEAR "clear"
+#include <unistd.h>
+#include "Getch.h"
+#endif
 
 int running;
 UserInfo currentUser;
@@ -10,6 +17,11 @@ MenuItem logoff, exitoption, addaccount, deleteaccount, addcard, deletecard,
 watchclientbyid, credit, debit, watchclientcardsbyid, watchaccountbyaccountid, watchaccountbycardid, 
 watchcardbycardid, addclient, deleteclient, watchclientbycard, updateclient, blockcard, unblockcard, changecurrency, changefeeandquotes;
 MenuItem deleteClientTest, addCardTest, getClientTest, creditTest;
+
+void pause(){
+	printf("Press any key to continue\n");
+	getch();
+}
 
 int GetCode()
 {
@@ -24,7 +36,7 @@ void Menu(MenuItem *menuItems, int n, char *header){
 	while (!esc) {
 		if (old != current){
 			old = current;
-			system("cls");
+			system(CLEAR);
 			if (header) printf("%s\n", header);
 			for (i = 0; i < n; i++){
 				if (current == i) printf("-");
@@ -32,15 +44,15 @@ void Menu(MenuItem *menuItems, int n, char *header){
 			}
 		}
 
-		switch (GetCode()){
-		case ARROW_UP:
+		switch (getch()){
+		case 'w':
 			if (current > 0) current--;
 			break;
-		case ARROW_DOWN:
+		case 's':
 			if (current < n - 1) current++;
 			break;
-		case ENTER:
-			system("cls");
+		case 'd':
+			system(CLEAR);
 			menuItems[current].action(menuItems[current].args);
 			esc = 1;
 			break;
@@ -58,22 +70,22 @@ void Credit(void *m){
 	int mul = (int)m;
 	float amount;
 	printf("Card ID: ");
-	scanf_s("%d", &cardId);
+	scanf("%d", &cardId);
 	printf("Amount: ");
-	scanf_s("%f", &amount);
+	scanf("%f", &amount);
 	if (CreditMoney(cardId, mul*amount)){
 		printf("Transaction succeed\n");
 	}
 	else {
 		printf("Transaction failed\n");
 	}
-	system("pause");
+	pause();
 }
 
 void ShowAccount(void* account){
 	Account* acc = (Account*)account;
 	printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", acc->Id, acc->Currency, acc->Balance);
-	system("pause");
+	pause();
 }
 
 void WatchClientByPassportNumber(){
@@ -82,20 +94,20 @@ void WatchClientByPassportNumber(){
 	Client client;
 	char header[300];
 	printf("Passport Number: ");
-	scanf_s("%d", &passportId);
+	scanf("%d", &passportId);
 	client = GetClient(passportId);
 	accounts = malloc(sizeof(MenuItem)*(client.AccountAmount + 1));
 	accounts[client.AccountAmount].action = &Back;
 	accounts[client.AccountAmount].args = &cycle;
 	accounts[client.AccountAmount].displayName = "Back";
 	if (client.Id != INVALID){
-		sprintf_s(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
+		sprintf(header, "Client ID: %d\nFirst Name: %s\nLast Name: %s\n", client.Id, client.FirstName, client.LastName);
 		cycle = 1;
 		for (i = 0; i < client.AccountAmount; i++){
 			accounts[i].displayName = malloc(sizeof(char) * 30);
 			accounts[i].action = &ShowAccount;
 			accounts[i].args = (void*)(&client.Accounts[i]);
-			sprintf_s(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
+			sprintf(accounts[i].displayName, "Account %d", client.Accounts[i].Id);
 		}
 
 		while (cycle) {
@@ -104,20 +116,20 @@ void WatchClientByPassportNumber(){
 	}
 	else {
 		printf("Client is not found\n");
-		system("pause");
+		pause();
 	}
 }
 
 void LoginDialog(){
 	char login[100], password[100];
 	printf("Login: ");
-	scanf_s("%s", login);
+	scanf("%s", login);
 	printf("Password: ");
-	scanf_s("%s", password);
+	scanf("%s", password);
 	currentUser = GetUser(login, password);
 	if (currentUser.Role == INVALID){
 		printf("User or password are incorrect\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -133,13 +145,13 @@ void AddAccount(){
 	char currency[10];
 	int clientId;
 	printf("Input currency.\n");
-	scanf_s("%s", currency);
+	scanf("%s", currency);
 	printf("Input client Id.\n");
-	scanf_s("%d", &clientId);
+	scanf("%d", &clientId);
 	if (AddAccountToDB(currency, clientId) == 0)
 	{
 		printf("Account created.\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -148,11 +160,11 @@ void AddAccount(){
 void DeleteAccount(){
 	int accountId;
 	printf("Input account Id.\n");
-	scanf_s("%d", &accountId);
+	scanf("%d", &accountId);
 	if (DeleteAccountFromDB(accountId) == 0)
 	{
 		printf("Account deleted.\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -164,25 +176,25 @@ void AddCard(){
 	
 	struct tm tm = *localtime(&t);
 	printf("Input account Id.\n");
-	scanf_s("%d", &accountId);
+	scanf("%d", &accountId);
 	printf("Input owner name.\n");
-	scanf_s(" %99[^\n]", ownerName);
+	scanf(" %99[^\n]", ownerName);
 	sprintf(expiredDate, "%d.%d.%d", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1910);
 	if (AddCardToDB(accountId, ownerName, expiredDate, cvv) == 0)
 	{
 		printf("Card created. CVV is %d. Expiration Date is %s\n", cvv, expiredDate);
-		system("pause");
+		pause();
 	}
 }
 
 void DeleteCard() {
 	int cardId;
 	printf("Input card Id.\n");
-	scanf_s("%d", &cardId);
+	scanf("%d", &cardId);
 	if (DeleteCardFromDB(cardId) == 0)
 	{
 		printf("Card deleted.\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -190,45 +202,45 @@ void WatchAccountInfoByAccountId(){
 	int accountId;
 	Account account;
 	printf("Account Id: ");
-	scanf_s("%d", &accountId);
+	scanf("%d", &accountId);
 	account = GetAccountInfoByAccountId(accountId);
 	if (account.Id != INVALID)
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
 	else
 		printf("Account not found\n");
-	system("pause");
+	pause();
 }
 
 void WatchAccountInfoByCardId(){
 	int cardId;
 	Account account;
 	printf("Card Id: ");
-	scanf_s("%d", &cardId);
+	scanf("%d", &cardId);
 	account = GetAccountInfoByCardId(cardId);
 	if (account.Id != INVALID)
 		printf("Account ID: %d\nCurrency: %s\nBalance: %f\n", account.Id, account.Currency, account.Balance);
 	else
 		printf("Account not found\n");
-	system("pause");
+	pause();
 }
 
 void WatchCardInfoByCardId(){
 	int cardId;
 	Card card;
 	printf("Card Id: ");
-	scanf_s("%d", &cardId);
+	scanf("%d", &cardId);
 	card = GetCardInfoByCardId(cardId);
 	if (card.Id != INVALID)
 		printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", card.Id, card.CVV, card.CardOwnerID, card.ExpirationDate, card.TotalTransactions);
 	else
 		printf("Card not found\n");
-	system("pause");
+	pause();
 }
 
 void ShowCard(void* card){
 	Card* c = (Card*)card;
 	printf("CardID: %d\nCVV: %d\nCardOwnerID: %s\nExpirationDate: %s\nTotalTransactions: %d\n", c->Id, c->CVV, c->CardOwnerID, c->ExpirationDate, c->TotalTransactions);
-	system("pause");
+	pause();
 }
 
 void WatchClientCardsByPassportNumber(){
@@ -238,7 +250,7 @@ void WatchClientCardsByPassportNumber(){
 	char header[300];
 	int CardAmount = 0;
 	printf("Passport Number: ");
-	scanf_s("%d", &passportId);
+	scanf("%d", &passportId);
 	client = GetClientCards(passportId);
 	for (i = 0; i < client.AccountAmount; i++)
 		CardAmount += client.Accounts[i].CardAmount;
@@ -264,7 +276,7 @@ void WatchClientCardsByPassportNumber(){
 	}
 	else {
 		printf("Client is not found\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -273,13 +285,13 @@ void AddClient()
 	int clientId;
 	char firstName[120], lastName[120];
 	printf("Input client's first name.\n");
-	scanf_s("%s", firstName);
+	scanf("%s", firstName);
 	printf("Input client's last name.\n");
-	scanf_s("%s", lastName);
+	scanf("%s", lastName);
 	if (AddClientToDB(firstName, lastName) == 0)
 	{
 		printf("Client added to the database.\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -287,11 +299,11 @@ void DeleteClient()
 {
 	int clientId;
 	printf("Input client Id.\n");
-	scanf_s("%d", &clientId);
+	scanf("%d", &clientId);
 	if (DeleteClientFromDB(clientId) == 0)
 	{
 		printf("Client deleted.\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -301,11 +313,11 @@ void UpdateClient()
 	Client client;
 	char firstName[20], lastName[20];
 	printf("Input client Id.\n");
-	scanf_s("%d", &clientId);
+	scanf("%d", &clientId);
 	printf("Input client's first name.\n");
-	scanf_s("%s", firstName);
+	scanf("%s", firstName);
 	printf("Input client's last name.\n");
-	scanf_s("%s", lastName);
+	scanf("%s", lastName);
 	UpdateClient(clientId, firstName, lastName);
 }
 
@@ -316,7 +328,7 @@ void WatchClientByCard()
 	Client client;
 	char header[300];
 	printf("Card ID: ");
-	scanf_s("%d", &CardId);
+	scanf("%d", &CardId);
 	if(CardExists(CardId)!=0)
 	{
 		client = GetClientByCardID(CardId);
@@ -340,13 +352,13 @@ void WatchClientByCard()
 		}
 		else {
 			printf("Client is not found\n");
-			system("pause");
+			pause();
 		}
 	}
 	else
 	{
 		printf("Client is not found\n");
-		system("pause");
+		pause();
 	}
 }
 
@@ -392,11 +404,11 @@ void AdministratorMenu(){
 void ChangeFeeAndQuotes(){
 	int Fee, Quota, AccountId;
 	printf("Input account ID\n");
-	scanf_s("%d", &AccountId);
+	scanf("%d", &AccountId);
 	printf("Input fee value\n");
-	scanf_s("%d", &Fee);
+	scanf("%d", &Fee);
 	printf("Input quote value\n");
-	scanf_s("%d", &Quota);
+	scanf("%d", &Quota);
 	if (ChangeFeeAndQuotesInAccount(AccountId, Fee, Quota) == 0)
 		printf("Successful\n");
 	else
@@ -409,9 +421,9 @@ void ChangeCurrency(){
 	char Currency[5];
 	int ClientId;
 	printf("Input value of currency\n");
-	scanf_s("%s", &Currency);
+	scanf("%s", &Currency);
 	printf("Input client ID\n");
-	scanf_s("%d", &ClientId);
+	scanf("%d", &ClientId);
 	if (ChangeCurrencyInAccount(Currency, ClientId) == 0)
 		printf("Currency changed succsesful\n");
 	else printf("Error in changing currency\n");
@@ -420,25 +432,25 @@ void ChangeCurrency(){
 void BlockCard(){
 	int CardId;
 	printf("Input card ID\n");
-	scanf_s("%d", &CardId);
+	scanf("%d", &CardId);
 	if (BlockCardInDB(CardId) == 0)
 	{
 		printf("Card is blocked.\n");
 	}
 	else printf("Error in blocking card.\n");
-	system("pause");
+	pause();
 }
 
 void UnblockCard(){
 	int CardId;
 	printf("Input card ID\n");
-	scanf_s("%d", &CardId);
+	scanf("%d", &CardId);
 	if (UnblockCardInDB(CardId) == 0)
 	{
 		printf("Card is unblocked.\n");
 	}
 	else printf("Error in blocking card.\n");
-	system("pause");
+	pause();
 }
 
 void InitializeDialog(){
